@@ -2,24 +2,18 @@ from django.shortcuts import render
 
 from ORS.ctl.BaseCtl import BaseCtl
 from ORS.utility.HtmlUtility import HtmlUtility
-from service.models import WeatherAlert
-from service.service.WeatherAlertService import WeatherAlertService
+from service.models import Movie
+from service.service.MovieService import MovieService
 from service.utility.DataValidator import DataValidator
 
-
-
-
-class WeatherAlertCtl(BaseCtl):
+class MovieCtl(BaseCtl):
 
     def preload(self, request):
-        status_list = [
-            "Normal",
-            "Heat Wave",
-            "Heavy Rain",
-            "Thunderstorm",
-            "Flood Warning",
-            "Cold Wave"
-        ]
+        status_list = ["Released",
+                       "Upcoming",
+                       "Now Showing",
+                       "Archived",
+                       "Cancelled"]
         # print("Preload status:", repr(self.form.get("status")))
         self.preload_data["status_select"] = HtmlUtility.get_list_from_list(
             "status",
@@ -33,11 +27,13 @@ class WeatherAlertCtl(BaseCtl):
     # Populate Form from HTTP Request
     def request_to_form(self, request):
         self.form["id"] = request.get("id", 0)
-        print('R2F =====================>', self.form["id"])
-        self.form["alert_id"] = request.get("alertId", 0)
-        self.form["alert_code"] = request.get("alertCode", "")
-        self.form["city_name"] = request.get("cityName", "")
-        self.form["temperature"] = request.get("temperature", "")
+        # print('R2F =====================>', self.form["id"])
+        self.form["movie_id"] = request.get("movieId", 0)
+        self.form["movie_code"] = request.get("movieCode", "")
+        self.form["movie_name"] = request.get("movieName", "")
+        # print('R2F =====================>', self.form["movie_name"])
+        self.form["director_name"] = request.get("directorName", "")
+        self.form["genre"] = request.get("genre", "")
         self.form["status"] = request.get("status", "")
 
     # Populate Form from Model
@@ -46,13 +42,14 @@ class WeatherAlertCtl(BaseCtl):
             return
         self.form["id"] = obj.id
         # print('M2F======================>', self.form["id"])
-        self.form["alert_id"] = obj.alert_id
-        self.form["alert_code"] = obj.alert_code
-        self.form["city_name"] = obj.city_name
-        self.form["temperature"] = obj.temperature
+        self.form["movie_id"] = obj.movie_id
+        self.form["movie_code"] = obj.movie_code
+        self.form["movie_name"] = obj.movie_Name
+        print('M2F======================>', self.form["movie_name"])
+        self.form["director_name"] = obj.director_name
+        self.form["genre"] = obj.genre
         self.form["status"] = obj.status
-        print('M2F======================>', self.form["status"])
-
+        # print('M2F======================>', self.form["status"])
 
     # Convert form into module
     def form_to_model(self, obj):
@@ -60,10 +57,12 @@ class WeatherAlertCtl(BaseCtl):
         if pk > 0:
             obj.id = pk
         print('F2M======================>', obj.id)
-        obj.alert_id = int(self.form.get("alert_id", 0))
-        obj.alert_code = self.form.get("alert_code", "")
-        obj.city_name = self.form.get("city_name", "")
-        obj.temperature = self.form.get("temperature", "")
+        obj.movie_id = int(self.form.get("movie_id", 0))
+        obj.movie_code = self.form.get("movie_code", "")
+        obj.movie_Name = self.form.get("movie_name", "")
+        print('F2M======================>', obj.movie_Name)
+        obj.director_name = self.form.get("director_name", "")
+        obj.genre = self.form.get("genre", "")
         obj.status = self.form.get("status", "")
         return obj
 
@@ -71,17 +70,20 @@ class WeatherAlertCtl(BaseCtl):
     def input_validation(self):
         super().input_validation()
         inputError = self.form["inputError"]
-        if DataValidator.isNull(self.form["alert_id"]):
-            inputError["alert_id"] = "Alert Id is required"
+        if DataValidator.isNull(self.form["movie_id"]):
+            inputError["movie_id"] = "Movie Id is required"
             self.form["error"] = True
-        if DataValidator.isNull(self.form["alert_code"]):
-            inputError["alert_code"] = "Alert Code is required"
+        if DataValidator.isNull(self.form["movie_code"]):
+            inputError["movie_code"] = "Movie Code is required"
             self.form["error"] = True
-        if DataValidator.isNull(self.form["city_name"]):
-            inputError["city_name"] = "City Name is required"
+        if DataValidator.isNull(self.form["movie_name"]):
+            inputError["movie_name"] = "Movie Name is required"
             self.form["error"] = True
-        if DataValidator.isNull(self.form["temperature"]):
-            inputError["temperature"] = "Temperature is required"
+        if DataValidator.isNull(self.form["director_name"]):
+            inputError["director_name"] = "Director Name is required"
+            self.form["error"] = True
+        if DataValidator.isNull(self.form["genre"]):
+            inputError["genre"] = "Genre is required"
             self.form["error"] = True
         if DataValidator.isNull(self.form["status"]):
             inputError["status"] = "Status is required"
@@ -91,8 +93,8 @@ class WeatherAlertCtl(BaseCtl):
     # Display Role page
     def display(self, request, params={}):
         if params["id"] > 0:
-            alert = self.get_service().get(params["id"])
-            self.model_to_form(alert)
+            movie = self.get_service().get(params["id"])
+            self.model_to_form(movie)
         return render(
             request,
             self.get_template(),
@@ -101,10 +103,10 @@ class WeatherAlertCtl(BaseCtl):
 
     # Submit Role page
     def submit(self, request, _params={}):
-        alert = self.form_to_model(WeatherAlert())
-        self.get_service().save(alert)
+        movie = self.form_to_model(Movie())
+        self.get_service().save(movie)
         if int(self.form["id"]) > 0:
-            self.form["id"] = alert.id
+            self.form["id"] = movie.id
         self.form["error"] = False
         self.form["message"] = "Data is saved"
         return render(
@@ -115,8 +117,8 @@ class WeatherAlertCtl(BaseCtl):
 
     # Template html of Role page
     def get_template(self):
-        return "ors/weatheralert.html"
+        return "ors/movie.html"
 
     # Service of Role
     def get_service(self):
-        return WeatherAlertService()
+        return MovieService()

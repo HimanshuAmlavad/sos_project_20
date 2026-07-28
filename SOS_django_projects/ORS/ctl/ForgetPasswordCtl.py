@@ -28,8 +28,10 @@ class ForgetPasswordCtl(BaseCtl):
             loginId = self.form.get("loginId")
             userObj = self.get_service().forgot_password(loginId)
             if userObj is None:
+                self.form['error'] = True
                 self.form["message"] = "Login ID does not exist"
             else:
+                self.form['error'] = False
                 self.form["message"] = "Password reset email has been sent"
         res = render(request, self.get_template(), {"form": self.form})
         return res

@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from service.service.EmployeeService import EmployeeService
+from service.service.MovieService import MovieService
 from .BaseCtl import BaseCtl
 
-class EmployeeListCtl(BaseCtl):
+class MovieListCtl(BaseCtl):
 
     def request_to_form(self, requestForm):
-        self.form['employee_id'] = requestForm.get('employeeId')
+        self.form['movie_name'] = requestForm.get('movie_name')
         self.form['page_number'] = int(requestForm.get('page_number', 1) or 1)
 
 
@@ -30,7 +30,7 @@ class EmployeeListCtl(BaseCtl):
         return render(request, self.get_template(), {'pageList': page_list, 'form': self.form})
 
     def get_service(self):
-        return EmployeeService()
+        return MovieService()
 
     def get_template(self):
-        return 'ors/employeelist.html'
+        return 'ors/movielist.html'

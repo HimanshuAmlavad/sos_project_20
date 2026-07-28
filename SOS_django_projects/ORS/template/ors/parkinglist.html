@@ -20,7 +20,7 @@
         <h2>Parking List</h2>
     </div>
 
-    {% if form.list|length > 0 %}
+    {% if pageList and pageList.object_list %}
 
     <!-- Search -->
     <div class="row justify-content-center mb-3">
@@ -63,7 +63,7 @@
 
             <tbody>
 
-            {% for l in form.list %}
+            {% for l in pageList.object_list %}
 
             <tr>
 

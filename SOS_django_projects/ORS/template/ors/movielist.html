@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weather Alert List</title>
+    <title>Employee List</title>
 
     <!-- Bootstrap 4 -->
 
@@ -17,7 +17,7 @@
     {% csrf_token %}
 
     <div class="text-center mb-4">
-        <h2>Weather Alert List</h2>
+        <h2>Movie List</h2>
     </div>
 
     {% if pageList and pageList.object_list %}
@@ -27,10 +27,10 @@
 
         <div class="col-md-4">
             <input type="text"
-                   name="alertId"
+                   name="movieNmae"
                    class="form-control"
-                   placeholder="Enter Alert Id"
-                   value="{{ form.alert_id }}">
+                   placeholder="Enter Movie Id"
+                   value="{{ form.movie_name }}">
         </div>
 
         <div class="col-md-2">
@@ -51,10 +51,11 @@
 
             <tr>
                 <th>S No.</th>
-                <th>Alert Id</th>
-                <th>Alert Code</th>
-                <th>City Name</th>
-                <th>Temperature</th>
+                <th>Movie Id</th>
+                <th>Movie Code</th>
+                <th>movie Name</th>
+                <th>Director Name</th>
+                <th>Genre</th>
                 <th>Status</th>
                 <th>Edit | Delete</th>
             </tr>
@@ -68,18 +69,19 @@
             <tr>
 
                 <td>{{ forloop.counter }}</td>
-                <td>{{ l.alert_id }}</td>
-                <td>{{ l.alert_code }}</td>
-                <td>{{ l.city_name }}</td>
-                <td>{{ l.temperature }}</td>
+                <td>{{ l.movie_id }}</td>
+                <td>{{ l.movie_code }}</td>
+                <td>{{ l.movie_Name }}</td>
+                <td>{{ l.director_name }}</td>
+                <td>{{ l.genre }}</td>
                 <td>{{ l.status }}</td>
 
                 <td>
-                    <a href="/ORS/WeatherAlert/edit/{{l.id}}/" class="btn btn-warning btn-sm">
+                    <a href="/ORS/Movie/edit/{{l.id}}/" class="btn btn-warning btn-sm">
                         Edit
                     </a>
 
-                    <a href="/ORS/WeatherAlertList/delete/{{l.id}}/" class="btn btn-danger btn-sm">
+                    <a href="/ORS/MovieList/delete/{{l.id}}/" class="btn btn-danger btn-sm">
                         Delete
                     </a>
                 </td>
@@ -95,9 +97,9 @@
     </div>
 
     <!-- Pagination -->
-   <div class="row mt-3">
+    <div class="row mt-3">
 
-    <div class="col-md-6">
+    <div class="col-md-4">
 
         <input type="submit"
                name="operation"
@@ -107,7 +109,11 @@
 
     </div>
 
-    <div class="col-md-6 text-right">
+       <div class="col-md-4 text-center">
+                <h5>Page : {{ pageList.number }}</h5>
+       </div>
+
+    <div class="col-md-4 text-right">
 
         <input type="submit"
                name="operation"
@@ -118,8 +124,6 @@
     </div>
 
 </div>
-
-        <input type="hidden" name="page_number" value="{{ pageList.number }}">
 
 
 

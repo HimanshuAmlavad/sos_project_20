@@ -109,7 +109,7 @@ WSGI_APPLICATION = "SOS_django_projects.wsgi.application"
 # Email Setup
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = True #transport layer service
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'himanshuamlavad2002@gmail.com'
 EMAIL_HOST_PASSWORD = 'kdko fhpl trpz epqr'
@@ -117,7 +117,7 @@ EMAIL_HOST_PASSWORD = 'kdko fhpl trpz epqr'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-
+# without pool
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -130,39 +130,48 @@ EMAIL_HOST_PASSWORD = 'kdko fhpl trpz epqr'
 #     }
 # }
 
+# for django
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "dj_db_conn_pool.backends.mysql",
+#         "NAME": "sos_db_grand",
+#         "USER": "root",
+#         "PASSWORD": "Amlavad@2002",
+#         "HOST": "127.0.0.1",
+#         "PORT": "3306",
+#
+#         "POOL_OPTIONS": {
+#             "POOL_SIZE": 10,
+#             "MAX_OVERFLOW": 90,
+#             "RECYCLE": 600, #second
+#         }
+#     }
+# }
+
+# for docker
 DATABASES = {
-    "default": {
-        "ENGINE": "dj_db_conn_pool.backends.mysql",
-        "NAME": "sos_db_grand",
-        "USER": "root",
-        "PASSWORD": "Amlavad@2002",
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sos_db',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'db',
+        'PORT': '3306',
 
         "POOL_OPTIONS": {
             "POOL_SIZE": 10,
             "MAX_OVERFLOW": 90,
-            "RECYCLE": 600, #second
+            "RECYCLE": 600,
         }
     }
 }
+
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "dj_db_conn_pool.backends.mysql",
-#         "NAME": "project04",
-#         "USER": "root",
-#         "PASSWORD": "root",
-#         "HOST": "db",
-#         "PORT": "3306",
-#     }
-# }
-#
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "dj_db_conn_pool.backends.mysql",
-#         "NAME": "project_20",
+#         "NAME": "sos_db",
 #         "USER": "django_user",
-#         "PASSWORD": "django_pass",
+#         "PASSWORD": "root",
 #         "HOST": "database",
 #         "PORT": "3306",
 #

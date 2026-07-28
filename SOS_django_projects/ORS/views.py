@@ -40,6 +40,12 @@ from ORS.ctl.voice_command_ctl import VoiceCommandCtl
 from ORS.ctl.voice_command_list_ctl import VoiceCommandListCtl
 from ORS.ctl.employee_ctl import EmployeeCtl
 from ORS.ctl.employee_list_ctl import EmployeeListCtl
+from ORS.ctl.book_ctl import BookCtl
+from ORS.ctl.book_list_ctl import BookListCtl
+from ORS.ctl.movies_ctl import MovieCtl
+from ORS.ctl.movie_list_ctl import MovieListCtl
+from ORS.ctl.vehicle_ctl import VehicleCtl
+from ORS.ctl.vehicle_list_ctl import VehicleListCtl
 
 def info(request, page, action):
     """Log incoming request details (method, page, action, and path) to stdout."""

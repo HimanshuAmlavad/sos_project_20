@@ -201,8 +201,8 @@ class Parking(models.Model):
     # def get_key(self):
     #     return self.parkingid
 
-    def get_value(self):
-        return self.parking_code
+    # def get_value(self):
+    #     return self.parking_code
 
 
 class Drone(models.Model):
@@ -218,8 +218,8 @@ class Drone(models.Model):
     # def get_key(self):
     #     return self.drone_id
 
-    def get_value(self):
-        return self.drone_code
+    # def get_value(self):
+    #     return self.drone_code
 
 
 class WeatherAlert(models.Model):
@@ -239,12 +239,11 @@ class VoiceCommand(models.Model):
     user_name = models.CharField(max_length=100)
     command_text = models.CharField(max_length=255)
     status = models.CharField(max_length=20)
-
     class Meta:
         db_table = "voice_command"
 
-    def get_value(self):
-        return self.command_code
+    # def get_value(self):
+    #     return self.command_code
 
 
 class Employee(models.Model):
@@ -258,5 +257,70 @@ class Employee(models.Model):
     class Meta:
         db_table = "employee"
 
-    def get_value(self):
-        return self.employee_code
+    # def get_value(self):
+    #     return self.employee_code
+
+from django.db import models
+
+class Book(models.Model):
+    book_id = models.IntegerField()
+    book_code = models.CharField(max_length=20, unique=True)
+    book_title = models.CharField(max_length=100)
+    category = models.CharField(max_length=50)
+    status = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "book"
+
+    # def get_value(self):
+    #     return self.book_id
+
+
+class Movie(models.Model):
+    # STATUS_CHOICES = [
+    #     ("Released", "Released"),
+    #     ("Upcoming", "Upcoming"),
+    #     ("Now Showing", "Now Showing"),
+    #     ("Archived", "Archived"),
+    #     ("Cancelled", "Cancelled"),
+    # ]
+    movie_id = models.IntegerField(unique=True)
+    movie_code = models.CharField(max_length=20, unique=True)
+    movie_name = models.CharField(max_length=100)
+    director_name = models.CharField(max_length=100)
+    genre = models.CharField(max_length=50)
+    status = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "movie"
+
+    # def get_value(self):
+    #     return self.movie_code
+
+class Vehicle(models.Model):
+    # STATUS_CHOICES = [
+    #     ("Available", "Available"),
+    #     ("In Use", "In Use"),
+    #     ("Under Maintenance", "Under Maintenance"),
+    #     ("Out of Service", "Out of Service"),
+    #     ("Sold", "Sold"),
+    # ]
+    #
+    # TYPE_CHOICES = [
+    #     ("Car", "Car"),
+    #     ("Bike", "Bike"),
+    #     ("Truck", "Truck"),
+    #     ("Bus", "Bus"),
+    #     ("Van", "Van"),
+    #     ("Auto Rickshaw", "Auto Rickshaw"),
+    #     ("Electric Vehicle", "Electric Vehicle"),
+    # ]
+    vehicle_id = models.IntegerField()
+    vehicle_no = models.CharField(max_length=20, unique=True)
+    model_name = models.CharField(max_length=100)
+    owner_name = models.CharField(max_length=100)
+    vehicle_type = models.CharField(max_length=30)
+    status = models.CharField(max_length=30)
+
+    class Meta:
+        db_table = "vehicle"
