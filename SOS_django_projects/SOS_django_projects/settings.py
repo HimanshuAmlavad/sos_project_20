@@ -131,40 +131,40 @@ EMAIL_HOST_PASSWORD = 'kdko fhpl trpz epqr'
 # }
 
 # for django
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "dj_db_conn_pool.backends.mysql",
-#         "NAME": "sos_db_grand",
-#         "USER": "root",
-#         "PASSWORD": "Amlavad@2002",
-#         "HOST": "127.0.0.1",
-#         "PORT": "3306",
-#
-#         "POOL_OPTIONS": {
-#             "POOL_SIZE": 10,
-#             "MAX_OVERFLOW": 90,
-#             "RECYCLE": 600, #second
-#         }
-#     }
-# }
-
-# for docker
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sos_db',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'db',
-        'PORT': '3306',
+    "default": {
+        "ENGINE": "dj_db_conn_pool.backends.mysql",
+        "NAME": "sos_db_grand",
+        "USER": "root",
+        "PASSWORD": "Amlavad@2002",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
 
         "POOL_OPTIONS": {
             "POOL_SIZE": 10,
             "MAX_OVERFLOW": 90,
-            "RECYCLE": 600,
+            "RECYCLE": 600, #second
         }
     }
 }
+
+# for docker
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'sos_db',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#         'HOST': 'db',
+#         'PORT': '3306',
+#
+#         "POOL_OPTIONS": {
+#             "POOL_SIZE": 10,
+#             "MAX_OVERFLOW": 90,
+#             "RECYCLE": 600, #10 min
+#         }
+#     }
+# }
 
 # DATABASES = {
 #     "default": {

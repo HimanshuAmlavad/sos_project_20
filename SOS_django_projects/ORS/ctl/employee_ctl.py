@@ -27,7 +27,7 @@ class EmployeeCtl(BaseCtl):
 
     # Populate Form from HTTP Request
     def request_to_form(self, request):
-        self.form["id"] = request.get("id", 0)
+        self.form["id"] = int(request.get("id", 0) or 0)
         # print('R2F =====================>', self.form["id"])
         self.form["employee_id"] = request.get("employeeId", 0)
         self.form["employee_code"] = request.get("employeeCode", "")

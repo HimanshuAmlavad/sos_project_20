@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +41,7 @@
                             <i class="fa-solid fa-pen-to-square"></i>
                             Update Vehicle
                         {% else %}
-                            <i class="fa-solid fa-book-open"></i>
+                            <i class="fa-solid fa-car"></i>
                             Add Vehicle
                         {% endif %}
 
@@ -105,7 +106,7 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-book text-primary"></i>
+                                    <i class="fa-solid fa-hashtag text-primary"></i>
                                     <strong>Vehicle Id:</strong>
                                 </label>
 
@@ -123,7 +124,7 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-align-left text-success"></i>
+                                    <i class="fa-solid fa-id-card text-success"></i>
                                     <strong>Vehicle No:</strong>
                                 </label>
 
@@ -141,12 +142,13 @@
                         </div>
 
                         <!-- Row 2 -->
-                         <div class="form-row">
+
+                        <div class="form-row">
 
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-book text-primary"></i>
+                                    <i class="fa-solid fa-car-side text-primary"></i>
                                     <strong>Model Name:</strong>
                                 </label>
 
@@ -164,7 +166,7 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-align-left text-success"></i>
+                                    <i class="fa-solid fa-user text-success"></i>
                                     <strong>Owner Name:</strong>
                                 </label>
 
@@ -188,10 +190,9 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-graduation-cap text-warning"></i>
+                                    <i class="fa-solid fa-car text-warning"></i>
                                     <strong>Vehicle Type</strong>
                                 </label>
-
 
                                 {{ form.preload_data.vehicle_select|safe }}
 
@@ -204,10 +205,9 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-graduation-cap text-warning"></i>
+                                    <i class="fa-solid fa-toggle-on text-warning"></i>
                                     <strong>Status</strong>
                                 </label>
-
 
                                 {{ form.preload_data.status_select|safe }}
 
@@ -230,7 +230,7 @@
                                        value="update"
                                        class="btn btn-primary">
 
-                                          <a href="/ORS/VehicleList" class="btn btn-secondary">
+                                <a href="/ORS/VehicleList" class="btn btn-secondary">
 
                                     <i class="fa-solid fa-list"></i>
                                     List
@@ -244,7 +244,7 @@
                                        value="save"
                                        class="btn btn-success">
 
-                                          <a href="/ORS/Vehicle" class="btn btn-warning">
+                                <a href="/ORS/Vehicle" class="btn btn-warning">
 
                                     <i class="fa-solid fa-rotate-right"></i>
                                     Reset

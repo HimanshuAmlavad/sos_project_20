@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,8 +41,8 @@
                             <i class="fa-solid fa-pen-to-square"></i>
                             Update Employee
                         {% else %}
-                            <i class="fa-solid fa-book-open"></i>
-                            Add Employeee
+                            <i class="fa-solid fa-user-plus"></i>
+                            Add Employee
                         {% endif %}
 
                     </h4>
@@ -105,7 +106,7 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-book text-primary"></i>
+                                    <i class="fa-solid fa-id-card text-primary"></i>
                                     <strong>Employee Id:</strong>
                                 </label>
 
@@ -123,7 +124,7 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-align-left text-success"></i>
+                                    <i class="fa-solid fa-barcode text-success"></i>
                                     <strong>Employee Code</strong>
                                 </label>
 
@@ -141,12 +142,13 @@
                         </div>
 
                         <!-- Row 2 -->
-                         <div class="form-row">
+
+                        <div class="form-row">
 
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-book text-primary"></i>
+                                    <i class="fa-solid fa-user text-primary"></i>
                                     <strong>Employee Name:</strong>
                                 </label>
 
@@ -164,7 +166,7 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-align-left text-success"></i>
+                                    <i class="fa-solid fa-building text-success"></i>
                                     <strong>Department:</strong>
                                 </label>
 
@@ -188,7 +190,7 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-align-left text-success"></i>
+                                    <i class="fa-solid fa-money-bill-wave text-success"></i>
                                     <strong>Salary:</strong>
                                 </label>
 
@@ -206,10 +208,9 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-graduation-cap text-warning"></i>
+                                    <i class="fa-solid fa-toggle-on text-warning"></i>
                                     <strong>Status</strong>
                                 </label>
-
 
                                 {{ form.preload_data.status_select|safe }}
 
@@ -220,8 +221,6 @@
                             </div>
 
                         </div>
-
-
 
                         <hr>
 
@@ -234,7 +233,7 @@
                                        value="update"
                                        class="btn btn-primary">
 
-                                          <a href="/ORS/EmployeeList" class="btn btn-secondary">
+                                <a href="/ORS/EmployeeList" class="btn btn-secondary">
 
                                     <i class="fa-solid fa-list"></i>
                                     List
@@ -248,7 +247,7 @@
                                        value="save"
                                        class="btn btn-success">
 
-                                          <a href="/ORS/Employee" class="btn btn-warning">
+                                <a href="/ORS/Employee" class="btn btn-warning">
 
                                     <i class="fa-solid fa-rotate-right"></i>
                                     Reset
@@ -275,3 +274,4 @@
 
 </body>
 </html>
+

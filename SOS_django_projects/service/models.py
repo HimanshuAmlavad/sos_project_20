@@ -260,7 +260,7 @@ class Employee(models.Model):
     # def get_value(self):
     #     return self.employee_code
 
-from django.db import models
+
 
 class Book(models.Model):
     book_id = models.IntegerField()
@@ -277,13 +277,6 @@ class Book(models.Model):
 
 
 class Movie(models.Model):
-    # STATUS_CHOICES = [
-    #     ("Released", "Released"),
-    #     ("Upcoming", "Upcoming"),
-    #     ("Now Showing", "Now Showing"),
-    #     ("Archived", "Archived"),
-    #     ("Cancelled", "Cancelled"),
-    # ]
     movie_id = models.IntegerField(unique=True)
     movie_code = models.CharField(max_length=20, unique=True)
     movie_name = models.CharField(max_length=100)
@@ -294,27 +287,9 @@ class Movie(models.Model):
     class Meta:
         db_table = "movie"
 
-    # def get_value(self):
-    #     return self.movie_code
+
 
 class Vehicle(models.Model):
-    # STATUS_CHOICES = [
-    #     ("Available", "Available"),
-    #     ("In Use", "In Use"),
-    #     ("Under Maintenance", "Under Maintenance"),
-    #     ("Out of Service", "Out of Service"),
-    #     ("Sold", "Sold"),
-    # ]
-    #
-    # TYPE_CHOICES = [
-    #     ("Car", "Car"),
-    #     ("Bike", "Bike"),
-    #     ("Truck", "Truck"),
-    #     ("Bus", "Bus"),
-    #     ("Van", "Van"),
-    #     ("Auto Rickshaw", "Auto Rickshaw"),
-    #     ("Electric Vehicle", "Electric Vehicle"),
-    # ]
     vehicle_id = models.IntegerField()
     vehicle_no = models.CharField(max_length=20, unique=True)
     model_name = models.CharField(max_length=100)
@@ -324,3 +299,61 @@ class Vehicle(models.Model):
 
     class Meta:
         db_table = "vehicle"
+
+
+class Department(models.Model):
+
+    department_id = models.IntegerField()
+    department_code = models.CharField(max_length=20, unique=True)
+    department_name = models.CharField(max_length=100)
+    manager_name = models.CharField(max_length=100)
+    status = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "department"
+
+
+class Fee(models.Model):
+
+    fee_id = models.IntegerField(unique=True)
+    student_id = models.CharField(max_length=20,unique=True)
+    amount = models.IntegerField()
+    payment_date = models.DateField()
+    payment_status = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "fee"
+
+class Scholarship(models.Model):
+
+    scholarship_id = models.IntegerField()
+    scholarship_name = models.CharField(max_length=100)
+    amount = models.IntegerField(max_length=15)
+    eligibility = models.CharField(max_length=255)
+    last_date = models.DateField()
+
+    class Meta:
+        db_table = "scholarship"
+
+class Attendance(models.Model):
+
+    attendance_id = models.IntegerField()
+    student_id = models.IntegerField()
+    student_name = models.CharField(max_length=100)
+    attendance_date = models.DateField()
+    student_class = models.CharField(max_length=20)
+    status = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "attendance"
+
+class Branch(models.Model):
+
+    branch_id = models.IntegerField(unique=True)
+    branch_name = models.CharField(max_length=100, unique=True)
+    city = models.CharField(max_length=100)
+    manager_name = models.CharField(max_length=100)
+    contact_no = models.CharField(max_length=15, unique=True)
+
+    class Meta:
+        db_table ="branch"

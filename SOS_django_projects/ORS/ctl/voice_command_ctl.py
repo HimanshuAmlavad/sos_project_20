@@ -23,7 +23,7 @@ class VoiceCommandCtl(BaseCtl):
 
     # Populate Form from HTTP Request
     def request_to_form(self, request):
-        self.form["id"] = request.get("id", 0)
+        self.form["id"] = int(request.get("id", 0) or 0)
         # print('R2F =====================>', self.form["id"])
         self.form["command_id"] = request.get("commandId", 0)
         self.form["command_code"] = request.get("commandCode", "")

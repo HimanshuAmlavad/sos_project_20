@@ -1,11 +1,13 @@
 from django.shortcuts import redirect
 
 PUBLIC_URLS = [
+    '/ORS/auth/Registration',
     '/ORS/auth/Login',
     '/ORS/auth/ForgetPassword',
     '/ORS/auth/Registration',
-    # '/ORS/Registration',
+    '/ORS/Registration',
     '/ORS/Registration/',
+    '/ORS/auth/Registration/',
 ]
 
 

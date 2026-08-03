@@ -46,6 +46,16 @@ from ORS.ctl.movies_ctl import MovieCtl
 from ORS.ctl.movie_list_ctl import MovieListCtl
 from ORS.ctl.vehicle_ctl import VehicleCtl
 from ORS.ctl.vehicle_list_ctl import VehicleListCtl
+from ORS.ctl.department_ctl import DepartmentCtl
+from ORS.ctl.department_list_ctl import DepartmentListCtl
+from ORS.ctl.fee_ctl import FeeCtl
+from ORS.ctl.fee_ctl_list import FeeListCtl
+from ORS.ctl.scholarship_ctl import ScholarshipCtl
+from ORS.ctl.scholarship_list_ctl import ScholarshipListCtl
+from ORS.ctl.attendance_ctl import AttendanceCtl
+from ORS.ctl.attendance_list_ctl import AttendanceListCtl
+from ORS.ctl.branch_ctl import BranchCtl
+from ORS.ctl.branch_list_ctl import BranchListCtl
 
 def info(request, page, action):
     """Log incoming request details (method, page, action, and path) to stdout."""

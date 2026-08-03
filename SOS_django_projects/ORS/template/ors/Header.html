@@ -1,12 +1,25 @@
 {% load static %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
 <!--Used for icon-->
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<style>
+    /* The fixed navbar is outside the normal document flow. */
+    body {
+        padding-top: 72px;
+    }
+
+    .use-case-menu {
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/">
         <img src="{% static 'images/logo.png' %}" alt="Rays" style="height: 40px;">
     </a>
@@ -17,7 +30,8 @@
 
             <!-- Administration -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     Administration
                 </a>
                 <div class="dropdown-menu" aria-labelledby="adminDropdown">
@@ -31,7 +45,8 @@
 
             <!-- Institution -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="institutionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="institutionDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Institution
                 </a>
                 <div class="dropdown-menu" aria-labelledby="institutionDropdown">
@@ -48,7 +63,8 @@
 
             <!-- People -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="peopleDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="peopleDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     People
                 </a>
                 <div class="dropdown-menu" aria-labelledby="peopleDropdown">
@@ -57,15 +73,14 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/ORS/Student">Student</a>
                     <a class="dropdown-item" href="/ORS/StudentList">Student List</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/ORS/Parking">Parking</a>
-                    <a class="dropdown-item" href="/ORS/ParkingList">Parking List</a>
+
                 </div>
             </li>
 
             <!-- Academics -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="academicsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="academicsDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     Academics
                 </a>
                 <div class="dropdown-menu" aria-labelledby="academicsDropdown">
@@ -74,14 +89,19 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/ORS/TimeTable">TimeTable</a>
                     <a class="dropdown-item" href="/ORS/TimeTableList">TimeTable List</a>
+
                 </div>
             </li>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="buildDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="buildDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     Use Case
                 </a>
-                <div class="dropdown-menu" aria-labelledby="buildDropdown">
+                <div class="dropdown-menu use-case-menu" aria-labelledby="buildDropdown">
+                    <a class="dropdown-item" href="/ORS/Branch">Branch</a>
+                    <a class="dropdown-item" href="/ORS/BranchList">Branch List</a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/ORS/Drone">Drone</a>
                     <a class="dropdown-item" href="/ORS/DroneList">Drone List</a>
                     <div class="dropdown-divider"></div>
@@ -91,7 +111,7 @@
                     <a class="dropdown-item" href="/ORS/Parking">Parking</a>
                     <a class="dropdown-item" href="/ORS/ParkingList">Parking List</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/ORS/VoiceCommand">Voice Coammnd</a>
+                    <a class="dropdown-item" href="/ORS/VoiceCommand">Voice Command</a>
                     <a class="dropdown-item" href="/ORS/VoiceCommandList">Command List</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/ORS/Employee">Employee</a>
@@ -105,8 +125,23 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/ORS/Vehicle">Vehicle</a>
                     <a class="dropdown-item" href="/ORS/VehicleList">Vehicle List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/ORS/Parking">Parking</a>
+                    <a class="dropdown-item" href="/ORS/ParkingList">Parking List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/ORS/Department">Department</a>
+                    <a class="dropdown-item" href="/ORS/DepartmentList">Department List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/ORS/Fee">Fee</a>
+                    <a class="dropdown-item" href="/ORS/FeeList">Fee List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/ORS/Scholarship">Scholarship</a>
+                    <a class="dropdown-item" href="/ORS/ScholarshipList">Scholarship List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/ORS/Attendance">Attendance</a>
+                    <a class="dropdown-item" href="/ORS/AttendanceList">Attendance List</a>
                 </div>
-              </li>
+            </li>
 
             {% endif %}
 
@@ -116,7 +151,8 @@
             {% if request.session.user %}
             <!-- Logged-in user dropdown -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user-circle"></i> {{ request.session.firstName }} {{ request.session.lastName }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
@@ -141,7 +177,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/ORS/Registration">
+                <a class="nav-link" href="/ORS/auth/Registration">
                     <i class="fas fa-user-plus"></i> Register
                 </a>
             </li>

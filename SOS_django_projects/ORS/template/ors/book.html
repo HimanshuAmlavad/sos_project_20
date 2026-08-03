@@ -105,7 +105,7 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-book text-primary"></i>
+                                    <i class="fa-solid fa-hashtag text-primary"></i>
                                     <strong>Book Id:</strong>
                                 </label>
 
@@ -123,7 +123,7 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-align-left text-success"></i>
+                                    <i class="fa-solid fa-barcode text-success"></i>
                                     <strong>Book Code</strong>
                                 </label>
 
@@ -141,12 +141,13 @@
                         </div>
 
                         <!-- Row 2 -->
-                         <div class="form-row">
+
+                        <div class="form-row">
 
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-book text-primary"></i>
+                                    <i class="fa-solid fa-heading text-primary"></i>
                                     <strong>Book Title:</strong>
                                 </label>
 
@@ -164,7 +165,7 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-align-left text-success"></i>
+                                    <i class="fa-solid fa-tags text-success"></i>
                                     <strong>Category:</strong>
                                 </label>
 
@@ -188,10 +189,9 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-graduation-cap text-warning"></i>
+                                    <i class="fa-solid fa-circle-info text-warning"></i>
                                     <strong>Status</strong>
                                 </label>
-
 
                                 {{ form.preload_data.status_select|safe }}
 
@@ -202,8 +202,6 @@
                             </div>
 
                         </div>
-
-
 
                         <hr>
 
@@ -216,7 +214,7 @@
                                        value="update"
                                        class="btn btn-primary">
 
-                                          <a href="/ORS/BookList" class="btn btn-secondary">
+                                <a href="/ORS/BookList" class="btn btn-secondary">
 
                                     <i class="fa-solid fa-list"></i>
                                     List
@@ -230,7 +228,7 @@
                                        value="save"
                                        class="btn btn-success">
 
-                                          <a href="/ORS/Book" class="btn btn-warning">
+                                <a href="/ORS/Book" class="btn btn-warning">
 
                                     <i class="fa-solid fa-rotate-right"></i>
                                     Reset
@@ -257,3 +255,4 @@
 
 </body>
 </html>
+

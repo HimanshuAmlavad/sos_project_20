@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fee Form</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        .text-danger {
+            display: block;
+            min-height: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+{% include './Header.html' %}
+
+<div class="container mt-5 mb-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8 col-md-10">
+
+            <div class="card shadow">
+
+                <!-- Card Header -->
+                <div class="card-header bg-primary text-white">
+
+                    <h4 class="text-center mb-0">
+
+                        {% if form.id > 0 %}
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Update Fee
+                        {% else %}
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                            Add Fee
+                        {% endif %}
+
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <!-- Message -->
+                        {% if form.message %}
+
+                            {% if form.error %}
+
+                                <div class="alert alert-danger alert-dismissible fade show"
+                                     role="alert">
+
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                    {{ form.message }}
+
+                                    <button type="button"
+                                            class="close"
+                                            data-dismiss="alert"
+                                            aria-label="Close">
+
+                                        <span aria-hidden="true">&times;</span>
+
+                                    </button>
+
+                                </div>
+
+                            {% else %}
+
+                                <div class="alert alert-success alert-dismissible fade show"
+                                     role="alert">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    {{ form.message }}
+
+                                    <button type="button"
+                                            class="close"
+                                            data-dismiss="alert"
+                                            aria-label="Close">
+
+                                        <span aria-hidden="true">&times;</span>
+
+                                    </button>
+
+                                </div>
+
+                            {% endif %}
+
+                        {% endif %}
+
+
+                        <input type="hidden"
+                               name="id"
+                               value="{{ form.id }}">
+
+
+                        <!-- ================= ROW 1 ================= -->
+
+                        <div class="form-row">
+
+                            <!-- Fee ID -->
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-hashtag text-primary"></i>
+                                    <strong>Fee ID:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="feeId"
+                                       value="{{ form.fee_id }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.fee_id }}
+                                </small>
+
+                            </div>
+
+
+                            <!-- Student ID -->
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-user-graduate text-success"></i>
+                                    <strong>Student ID:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="studentId"
+                                       value="{{ form.student_id }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.student_id }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================= ROW 2 ================= -->
+
+                        <div class="form-row">
+
+                            <!-- Amount -->
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-indian-rupee-sign text-warning"></i>
+                                    <strong>Amount:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="amount"
+                                       value="{{ form.amount }}"
+                                       step="0.01"
+                                       min="0"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.amount }}
+                                </small>
+
+                            </div>
+
+
+                            <!-- Payment Date -->
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-calendar-days text-success"></i>
+                                    <strong>Payment Date:</strong>
+                                </label>
+
+                                <input type="date"
+                                       name="paymentDate"
+                                       value="{{ form.payment_date }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.payment_date }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================= ROW 3 ================= -->
+
+                        <div class="form-row">
+
+                            <!-- Payment Status -->
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-money-check-dollar text-danger"></i>
+                                    <strong>Payment Status:</strong>
+                                </label>
+
+                                {{ form.preload_data.status_select|safe }}
+
+                                <small class="text-danger">
+                                    {{ form.inputError.payment_status }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <hr>
+
+
+                        <!-- ================= BUTTONS ================= -->
+
+                        <div class="text-center">
+
+                            {% if form.id > 0 %}
+
+                                <input type="submit"
+                                       name="operation"
+                                       value="update"
+                                       class="btn btn-primary">
+
+                                <a href="/ORS/FeeList"
+                                   class="btn btn-secondary">
+
+                                    <i class="fa-solid fa-list"></i>
+                                    List
+
+                                </a>
+
+                            {% else %}
+
+                                <input type="submit"
+                                       name="operation"
+                                       value="save"
+                                       class="btn btn-success">
+
+                                <a href="/ORS/Fee"
+                                   class="btn btn-warning">
+
+                                    <i class="fa-solid fa-rotate-right"></i>
+                                    Reset
+
+                                </a>
+
+                            {% endif %}
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% include "./Footer.html" %}
+
+</body>
+</html>
+

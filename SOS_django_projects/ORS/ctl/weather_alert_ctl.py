@@ -32,7 +32,7 @@ class WeatherAlertCtl(BaseCtl):
 
     # Populate Form from HTTP Request
     def request_to_form(self, request):
-        self.form["id"] = request.get("id", 0)
+        self.form["id"] = int(request.get("id", 0) or 0)
         print('R2F =====================>', self.form["id"])
         self.form["alert_id"] = request.get("alertId", 0)
         self.form["alert_code"] = request.get("alertCode", "")

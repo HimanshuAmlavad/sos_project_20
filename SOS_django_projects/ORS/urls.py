@@ -23,6 +23,7 @@ urlpatterns = [
     #/ORS/auth/CP  - Change password
     #/ORS/auth/FP  - Forgot Password
     #/ORS/auth/Registration  - Forgot Password
+    path("auth/Registration", views.auth_action),
     path('auth/<page>', views.auth_action),
 
     path('<page>/<int:id>/', views.actionId),
