@@ -357,3 +357,14 @@ class Branch(models.Model):
 
     class Meta:
         db_table ="branch"
+
+class Result(models.Model):
+
+    result_id = models.IntegerField()
+    student_id = models.CharField(max_length=20)
+    percentage = models.DecimalField(max_digits=5, decimal_places=2)
+    grade = models.CharField(max_length=5)
+    status = models.CharField(max_length=20)
+
+    class Meta:
+        db_table ="result"

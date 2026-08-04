@@ -56,6 +56,8 @@ from ORS.ctl.attendance_ctl import AttendanceCtl
 from ORS.ctl.attendance_list_ctl import AttendanceListCtl
 from ORS.ctl.branch_ctl import BranchCtl
 from ORS.ctl.branch_list_ctl import BranchListCtl
+from ORS.ctl.result_ctl import ResultCtl
+from ORS.ctl.result_list_ctl import ResultListCtl
 
 def info(request, page, action):
     """Log incoming request details (method, page, action, and path) to stdout."""
