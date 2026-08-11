@@ -326,7 +326,7 @@ class Fee(models.Model):
 
 class Scholarship(models.Model):
 
-    scholarship_id = models.IntegerField()
+    scholarship_id = models.IntegerField(unique=True)
     scholarship_name = models.CharField(max_length=100)
     amount = models.IntegerField(max_length=15)
     eligibility = models.CharField(max_length=255)
@@ -337,8 +337,8 @@ class Scholarship(models.Model):
 
 class Attendance(models.Model):
 
-    attendance_id = models.IntegerField()
-    student_id = models.IntegerField()
+    attendance_id = models.IntegerField(unique=True)
+    student_id = models.IntegerField(unique=True)
     student_name = models.CharField(max_length=100)
     attendance_date = models.DateField()
     student_class = models.CharField(max_length=20)
@@ -360,11 +360,22 @@ class Branch(models.Model):
 
 class Result(models.Model):
 
-    result_id = models.IntegerField()
-    student_id = models.CharField(max_length=20)
-    percentage = models.DecimalField(max_digits=5, decimal_places=2)
+    result_id = models.IntegerField(unique=True)
+    student_id = models.CharField(max_length=20, unique=True)
+    percentage = models.DecimalField(max_digits=5, decimal_places=1)
     grade = models.CharField(max_length=5)
     status = models.CharField(max_length=20)
 
     class Meta:
         db_table ="result"
+
+class CreditCard(models.Model):
+
+    card_id = models.IntegerField(unique=True)
+    card_number = models.CharField(max_length=16, unique=True)
+    card_holder = models.CharField(max_length=100)
+    expiry_date = models.DateField()
+    card_type = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = "creditcard"

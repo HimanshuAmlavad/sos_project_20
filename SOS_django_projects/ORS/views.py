@@ -58,6 +58,8 @@ from ORS.ctl.branch_ctl import BranchCtl
 from ORS.ctl.branch_list_ctl import BranchListCtl
 from ORS.ctl.result_ctl import ResultCtl
 from ORS.ctl.result_list_ctl import ResultListCtl
+from ORS.ctl.creditcard_ctl import CreditCardCtl
+from ORS.ctl.creditcard_list_ctl import CreditCardListCtl
 
 def info(request, page, action):
     """Log incoming request details (method, page, action, and path) to stdout."""
