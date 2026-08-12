@@ -379,3 +379,14 @@ class CreditCard(models.Model):
 
     class Meta:
         db_table = "creditcard"
+
+class ATM(models.Model):
+
+    atm_id = models.IntegerField(unique=True)
+    location = models.CharField(max_length=100)
+    bank_name = models.CharField(max_length=100)
+    cash_available = models.IntegerField()
+    status = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "atm"

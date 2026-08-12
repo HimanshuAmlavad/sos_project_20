@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ATM Form</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        .text-danger{
+            display:block;
+            min-height:20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+{% include './Header.html' %}
+
+<div class="container mt-5 mb-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8 col-md-10">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h4 class="text-center mb-0">
+
+                        {% if form.id > 0 %}
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Update ATM
+                        {% else %}
+                            <i class="fa-solid fa-drone"></i>
+                            Add ATM
+                        {% endif %}
+
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        {% if form.message %}
+
+                            {% if form.error %}
+
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+
+                                <i class="fa-solid fa-circle-xmark text-danger"></i>
+                                {{ form.message }}
+
+                                <button type="button"
+                                        class="close"
+                                        data-dismiss="alert"
+                                        aria-label="Close">
+
+                                    <span aria-hidden="true">&times;</span>
+
+                                </button>
+
+                            </div>
+
+                            {% else %}
+
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+
+                                <i class="fa-solid fa-circle-check text-success"></i>
+                                {{ form.message }}
+
+                                <button type="button"
+                                        class="close"
+                                        data-dismiss="alert"
+                                        aria-label="Close">
+
+                                    <span aria-hidden="true">&times;</span>
+
+                                </button>
+
+                            </div>
+
+                            {% endif %}
+
+                        {% endif %}
+
+                        <input type="hidden" name="id" value="{{ form.id }}">
+
+                        <!-- Row 1 -->
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-hashtag text-primary"></i>
+                                    <strong>ATM Id:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="atmId"
+                                       value="{{ form.atm_id }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.atm_id }}
+                                </small>
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-barcode text-success"></i>
+                                    <strong>Location:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="location"
+                                       value="{{ form.location}}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.location }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Row 2 -->
+                         <div class="form-row">
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-user-tie text-primary"></i>
+                                    <strong>Bank Name:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="bankName"
+                                       value="{{ form.bank_name }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.bank_name}}
+                                </small>
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-location-dot text-success"></i>
+                                    <strong>Cash Available:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="cashAvailable"
+                                       value="{{ form.cash_available }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.cash_available }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Row 3 -->
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-signal text-warning"></i>
+                                    <strong>Status</strong>
+                                </label>
+
+
+                                {{ form.preload_data.status_select|safe }}
+
+                                <small class="text-danger">
+                                    {{ form.inputError.status }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+                        <div class="text-center">
+
+                            {% if form.id > 0 %}
+
+                                <input type="submit"
+                                       name="operation"
+                                       value="update"
+                                       class="btn btn-primary">
+
+                                          <a href="/ORS/AtmList" class="btn btn-secondary">
+
+                                    <i class="fa-solid fa-list"></i>
+                                    List
+
+                                </a>
+
+                            {% else %}
+
+                                <input type="submit"
+                                       name="operation"
+                                       value="save"
+                                       class="btn btn-success">
+
+                                          <a href="/ORS/Atm" class="btn btn-warning">
+
+                                    <i class="fa-solid fa-rotate-right"></i>
+                                    Reset
+
+                                </a>
+
+                            {% endif %}
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% include "./Footer.html"%}
+
+</body>
+</html>
