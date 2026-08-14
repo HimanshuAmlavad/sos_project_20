@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+
+    <!-- Bootstrap 4 -->
+
+</head>
+<body>
+
+{% include './Header.html' %}
+
+<div class="container-fluid mt-4">
+
+<form method="POST">
+    {% csrf_token %}
+
+    <div class="text-center mb-4">
+        <h2>Product List</h2>
+    </div>
+
+    {% if pageList and pageList.object_list %}
+
+    <!-- Search -->
+   <div class="row justify-content-center mb-3">
+
+        <div class="col-md-4">
+            <input type="text"
+                   name="productId"
+                   class="form-control"
+                   placeholder="Enter Product Id"
+                   value="{{ form.product_id }}">
+        </div>
+
+        <div class="col-md-2">
+            <input type="submit"
+                   name="operation"
+                   value="search"
+                   class="btn btn-primary btn-block">
+        </div>
+
+    </div>
+
+    <!--        <div class="col-md-4">-->
+    <!--            <input type="text"-->
+    <!--                   name="productName"-->
+    <!--                   class="form-control"-->
+    <!--                   placeholder="Enter Product Name"-->
+    <!--                   value="{{ form.product_name }}">-->
+    <!--        </div>-->
+
+
+
+
+    <!-- Table -->
+    <div class="table-responsive">
+
+        <table class="table table-bordered table-hover table-dark text-center">
+
+            <thead class="thead-light">
+
+            <tr>
+                <th>S No.</th>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Category</th>
+                <th>Edit | Delete</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for l in pageList.object_list %}
+
+            <tr>
+
+                <td>{{ forloop.counter }}</td>
+                <td>{{ l.product_id }}</td>
+                <td>{{ l.product_name }}</td>
+                <td>{{ l.price }}</td>
+                <td>{{ l.quantity }}</td>
+                <td>{{ l.category }}</td>
+
+                <td>
+                    <a href="/ORS/Product/edit/{{l.id}}/" class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <a href="/ORS/ProductList/delete/{{l.id}}/" class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="row mt-3">
+
+        <div class="col-md-4">
+
+            <input type="submit"
+                   name="operation"
+                   value="previous"
+                   class="btn btn-secondary"
+                   {% if not pageList.has_previous %}disabled{% endif %}>
+
+        </div>
+
+        <div class="col-md-4 text-center">
+            <h5>Page : {{ pageList.number }}</h5>
+        </div>
+
+        <div class="col-md-4 text-right">
+
+            <input type="submit"
+                   name="operation"
+                   value="next"
+                   class="btn btn-secondary"
+                   {% if not pageList.has_next %}disabled{% endif %}>
+
+        </div>
+
+    </div>
+
+    <input type="hidden" name="page_number" value="{{ pageList.number }}">
+
+    {% else %}
+
+    <div class="text-center">
+
+        <h3 class="text-danger">No Record Found</h3>
+
+        <input type="submit"
+               value="back"
+               class="btn btn-primary">
+
+    </div>
+
+    {% endif %}
+
+</form>
+
+</div>
+
+{% include "./Footer.html"%}
+
+</body>
+</html>
+

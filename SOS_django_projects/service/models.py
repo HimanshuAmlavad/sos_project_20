@@ -390,3 +390,13 @@ class ATM(models.Model):
 
     class Meta:
         db_table = "atm"
+
+class Product(models.Model):
+    product_id = models.IntegerField(unique=True)
+    product_name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.IntegerField()
+    category = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "product"

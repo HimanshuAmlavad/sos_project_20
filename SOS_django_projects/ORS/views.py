@@ -60,6 +60,10 @@ from ORS.ctl.result_ctl import ResultCtl
 from ORS.ctl.result_list_ctl import ResultListCtl
 from ORS.ctl.creditcard_ctl import CreditCardCtl
 from ORS.ctl.creditcard_list_ctl import CreditCardListCtl
+from ORS.ctl.atm_ctl import AtmCtl
+from ORS.ctl.atm_list_ctl import AtmListCtl
+from ORS.ctl.product_ctl import ProductCtl
+from ORS.ctl.product_list_ctl import ProductListCtl
 
 def info(request, page, action):
     """Log incoming request details (method, page, action, and path) to stdout."""

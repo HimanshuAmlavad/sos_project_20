@@ -19,6 +19,8 @@ class BaseDAO(ABC):
         except self.get_model().DoesNotExist:
             logger.warning("%s.get() pk=%s not found", self.__class__.__name__, pk)
             return None
+            # return
+
 
     def get_all(self):
         return self.get_model().objects.all()

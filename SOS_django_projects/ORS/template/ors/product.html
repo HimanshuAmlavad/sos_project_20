@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ATM Form</title>
+    <title>Product Form</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
@@ -38,10 +38,10 @@
 
                         {% if form.id > 0 %}
                             <i class="fa-solid fa-pen-to-square"></i>
-                            Update ATM
+                            Update Product
                         {% else %}
-                            <i class="fa-solid fa-building-columns"></i>
-                            Add ATM
+                            <i class="fa-solid fa-box-open"></i>
+                            Add Product
                         {% endif %}
 
                     </h4>
@@ -106,16 +106,16 @@
 
                                 <label>
                                     <i class="fa-solid fa-hashtag text-primary"></i>
-                                    <strong>ATM Id:</strong>
+                                    <strong>Product Id:</strong>
                                 </label>
 
                                 <input type="text"
-                                       name="atmId"
-                                       value="{{ form.atm_id }}"
+                                       name="productId"
+                                       value="{{ form.product_id }}"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.atm_id }}
+                                    {{ form.inputError.product_id }}
                                 </small>
 
                             </div>
@@ -123,17 +123,17 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-location-dot text-success"></i>
-                                    <strong>Location:</strong>
+                                    <i class="fa-solid fa-indian-rupee-sign text-success"></i>
+                                    <strong>Price</strong>
                                 </label>
 
                                 <input type="text"
-                                       name="location"
-                                       value="{{ form.location}}"
+                                       name="price"
+                                       value="{{ form.price }}"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.location }}
+                                    {{ form.inputError.price }}
                                 </small>
 
                             </div>
@@ -141,22 +141,23 @@
                         </div>
 
                         <!-- Row 2 -->
-                         <div class="form-row">
+
+                        <div class="form-row">
 
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-building-columns text-primary"></i>
-                                    <strong>Bank Name:</strong>
+                                    <i class="fa-solid fa-box text-primary"></i>
+                                    <strong>Product Name:</strong>
                                 </label>
 
                                 <input type="text"
-                                       name="bankName"
-                                       value="{{ form.bank_name }}"
+                                       name="productName"
+                                       value="{{ form.product_name }}"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.bank_name}}
+                                    {{ form.inputError.product_name }}
                                 </small>
 
                             </div>
@@ -164,17 +165,17 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-money-bill-wave text-success"></i>
-                                    <strong>Cash Available:</strong>
+                                    <i class="fa-solid fa-cubes text-success"></i>
+                                    <strong> Quantity:</strong>
                                 </label>
 
                                 <input type="text"
-                                       name="cashAvailable"
-                                       value="{{ form.cash_available }}"
+                                       name="quantity"
+                                       value="{{ form.quantity}}"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.cash_available }}
+                                    {{ form.inputError.quantity }}
                                 </small>
 
                             </div>
@@ -188,15 +189,14 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-circle-info text-warning"></i>
-                                    <strong>Status</strong>
+                                    <i class="fa-solid fa-tags text-warning"></i>
+                                    <strong>Category</strong>
                                 </label>
 
-
-                                {{ form.preload_data.status_select|safe }}
+                                {{ form.preload_data.category_select|safe }}
 
                                 <small class="text-danger">
-                                    {{ form.inputError.status }}
+                                    {{ form.inputError.category }}
                                 </small>
 
                             </div>
@@ -214,7 +214,7 @@
                                        value="update"
                                        class="btn btn-primary">
 
-                                          <a href="/ORS/AtmList" class="btn btn-secondary">
+                                <a href="/ORS/ProductList" class="btn btn-secondary">
 
                                     <i class="fa-solid fa-list"></i>
                                     List
@@ -228,7 +228,7 @@
                                        value="save"
                                        class="btn btn-success">
 
-                                          <a href="/ORS/Atm" class="btn btn-warning">
+                                <a href="/ORS/Product" class="btn btn-warning">
 
                                     <i class="fa-solid fa-rotate-right"></i>
                                     Reset

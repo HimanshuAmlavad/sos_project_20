@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from ORS.ctl.BaseCtl import BaseCtl
 from ORS.utility.HtmlUtility import HtmlUtility
-from service.models import Drone, ATM
+from service.models import ATM
 from service.service.AtmService import AtmService
 from service.utility.DataValidator import DataValidator
 
