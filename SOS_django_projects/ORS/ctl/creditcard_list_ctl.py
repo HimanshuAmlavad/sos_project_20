@@ -5,7 +5,7 @@ from .BaseCtl import BaseCtl
 class CreditCardListCtl(BaseCtl):
 
     def request_to_form(self, requestForm):
-        self.form['card_number'] = requestForm.get('cardNumber')
+        self.form['card_number'] = requestForm.get('cardNumber',"")
         self.form['page_number'] = int(requestForm.get('page_number', 1) or 1)
 
 

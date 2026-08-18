@@ -19,6 +19,8 @@ class BaseCtl(ABC):
             "message": "",
             "error": False,
             "inputError": {},
+            "page_no": 1,
+            "page_size": 5
         }
 
     def preload(self, request):

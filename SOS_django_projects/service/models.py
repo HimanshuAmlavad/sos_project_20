@@ -400,3 +400,14 @@ class Product(models.Model):
 
     class Meta:
         db_table = "product"
+
+class Order(models.Model):
+
+    order_id = models.IntegerField(unique=True)
+    order_date = models.DateField()
+    amount = models.IntegerField()
+    status = models.CharField(max_length=20)
+    customer_id = models.IntegerField()
+
+    class Meta:
+        db_table = "order"

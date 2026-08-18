@@ -16,16 +16,16 @@ class BaseService(ABC):
     def search(self, params=None, page_number=0, page_size=5):
         # Normalise early so all code below can safely use params as a dict
         params = params or {}
-        result = self.get_dao().search(params, page_number, page_size)
+        result = self.get_dao().search(params)
 
         # page_number == 0 returns a plain QuerySet — no Page attributes available
         if page_number == 0:
             return result
         
-        params["has_next"] = result.has_next()
-        params["has_previous"] = result.has_previous()
-        params["start_index"] = (page_number - 1) * page_size
-        params["end_index"] = params["start_index"] + len(result.object_list)
+        # params["has_next"] = result.has_next()
+        # params["has_previous"] = result.has_previous()
+        # params["start_index"] = (page_number - 1) * page_size
+        # params["end_index"] = params["start_index"] + len(result.object_list)
         
         return result
 
