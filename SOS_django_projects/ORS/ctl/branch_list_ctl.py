@@ -6,8 +6,9 @@ from .BaseCtl import BaseCtl
 class BranchListCtl(BaseCtl):
 
     def request_to_form(self, requestForm):
-        self.form['branch_name'] = requestForm.get('branchName')
+        self.form['branch_name'] = requestForm.get('branchName',"")
         self.form['page_number'] = int(requestForm.get('page_number', 1) or 1)
+        self.form['page_size'] = int(requestForm.get('page_size', 5) or 5)
 
     def display(self, request, params={}):
         self.form["page_number"] = 1

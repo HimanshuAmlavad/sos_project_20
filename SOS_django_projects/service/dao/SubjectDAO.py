@@ -18,3 +18,10 @@ class SubjectDAO(BaseDAO):
         except Course.DoesNotExist:
             obj.courseName = ""
         return obj
+
+    def get_where_conditions(self, query, params):
+        value = params.get("id", 0)
+        if DataValidator.isNotNull(value) and value != 0:
+            query = query.filter(id=int(value))
+        
+        return query

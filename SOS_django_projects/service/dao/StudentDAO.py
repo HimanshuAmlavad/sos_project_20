@@ -1,5 +1,6 @@
 from service.models import Student, College
 from .BaseDAO import BaseDAO
+from service.utility.DataValidator import DataValidator
 
 
 class StudentDAO(BaseDAO):
@@ -17,3 +18,10 @@ class StudentDAO(BaseDAO):
         except College.DoesNotExist:
             obj.collegeName = ""
         return obj
+
+    def get_where_conditions(self, query, params):
+        value = params.get("id", 0)
+        if DataValidator.isNotNull(value) and value != 0:
+            query = query.filter(id=int(value))
+        
+        return query

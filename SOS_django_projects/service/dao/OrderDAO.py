@@ -22,7 +22,7 @@ class OrderDAO(BaseDAO):
         # # Filter by status if provided
         # status = params.get("status", "")
         # if DataValidator.isNotNull(status):
-        #     query = query.filter(status__iexact=status.strip())
+        #     query = query.filter(status__istartswith=status.strip())
         
         # # Filter by customer_id if provided
         # customer_id = params.get("customer_id", 0)

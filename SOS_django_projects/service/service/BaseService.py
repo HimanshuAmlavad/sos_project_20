@@ -16,6 +16,13 @@ class BaseService(ABC):
     def search(self, params=None, page_number=0, page_size=5):
         # Normalise early so all code below can safely use params as a dict
         params = params or {}
+        
+        # Handle both naming conventions: page_number (from controllers) and page_no (from form)
+        if page_number > 0:
+            params["page_no"] = page_number
+        if page_size > 0:
+            params["page_size"] = page_size
+        
         result = self.get_dao().search(params)
 
         # page_number == 0 returns a plain QuerySet — no Page attributes available

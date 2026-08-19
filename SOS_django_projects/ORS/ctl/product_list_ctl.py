@@ -7,9 +7,10 @@ class ProductListCtl(BaseCtl):
 
     def request_to_form(self, requestForm):
         # Convert None values to empty strings to prevent "None" from appearing in search box
-        self.form['product_id'] = requestForm.get('productId') or ''
-        self.form['product_name'] = requestForm.get('productName') or ''
+        self.form['product_id'] = requestForm.get('productId',"")
+        self.form['product_name'] = requestForm.get('productName',"") 
         self.form['page_number'] = int(requestForm.get('page_number', 1) or 1)
+        self.form['page_size'] = int(requestForm.get('page_size', 5) or 5)
 
     def display(self, request, params={}):
         self.form['page_number'] = 1

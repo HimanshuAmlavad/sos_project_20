@@ -411,3 +411,14 @@ class Order(models.Model):
 
     class Meta:
         db_table = "order"
+
+class Customer(models.Model):
+
+    customer_id = models.IntegerField(unique=True)
+    customer_name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=15, unique=True)
+    address = models.TextField()
+
+    class Meta:
+        db_table = "customer"

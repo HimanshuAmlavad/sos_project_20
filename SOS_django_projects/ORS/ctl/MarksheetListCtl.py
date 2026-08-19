@@ -20,10 +20,11 @@ class MarksheetListCtl(BaseCtl):
         return self.preload_data
 
     def request_to_form(self, requestForm):
-        self.form["rollNumber"] = requestForm.get("rollNumber", None)
-        self.form["name"] = requestForm.get("name", None)
-        self.form["student_id"] = requestForm.get("student_id", None)
+        self.form["rollNumber"] = requestForm.get("rollNumber", "")
+        self.form["name"] = requestForm.get("name", "")
+        self.form["student_id"] = requestForm.get("student_id", "")
         self.form["page_number"] = int(requestForm.get("page_number", 1))
+        self.form["page_size"] = int(requestForm.get("page_size", 5) or 5)
 
     def display(self, request, params={}):
         self.page_list = self.get_service().search(self.form, page_number=1)

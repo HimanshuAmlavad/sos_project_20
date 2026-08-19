@@ -1,5 +1,6 @@
 from service.models import TimeTable, Course, Subject
 from .BaseDAO import BaseDAO
+from service.utility.DataValidator import DataValidator
 
 
 class TimeTableDAO(BaseDAO):
@@ -22,3 +23,10 @@ class TimeTableDAO(BaseDAO):
         except Subject.DoesNotExist:
             obj.subject_name = ""
         return obj
+
+    def get_where_conditions(self, query, params):
+        value = params.get("id", 0)
+        if DataValidator.isNotNull(value) and value != 0:
+            query = query.filter(id=int(value))
+        
+        return query

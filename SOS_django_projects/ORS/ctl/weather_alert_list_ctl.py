@@ -8,8 +8,9 @@ from .BaseCtl import BaseCtl
 class WeatherAlertListCtl(BaseCtl):
 
     def request_to_form(self, requestForm):
-        self.form['alert_id'] = requestForm.get('alertId')
+        self.form['alert_id'] = requestForm.get('alertId',"")
         self.form['page_number'] = int(requestForm.get('page_number', 1) or 1)
+        self.form['page_size'] = int(requestForm.get('page_size', 5) or 5)
 
 
     def display(self, request, params={}):

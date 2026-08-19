@@ -32,13 +32,14 @@ class FacultyListCtl(BaseCtl):
         return self.preload_data
 
     def request_to_form(self, requestForm):
-        self.form["firstName"] = requestForm.get("firstName", None)
-        self.form["lastName"] = requestForm.get("lastName", None)
-        self.form["email"] = requestForm.get("email", None)
-        self.form["college_ID"] = requestForm.get("college_ID", None)
-        self.form["course_ID"] = requestForm.get("course_ID", None)
-        self.form["subject_ID"] = requestForm.get("subject_ID", None)
+        self.form["firstName"] = requestForm.get("firstName", "")
+        self.form["lastName"] = requestForm.get("lastName", "")
+        self.form["email"] = requestForm.get("email", "")
+        self.form["college_ID"] = requestForm.get("college_ID", "")
+        self.form["course_ID"] = requestForm.get("course_ID", "")
+        self.form["subject_ID"] = requestForm.get("subject_ID", "")
         self.form["page_number"] = int(requestForm.get("page_number", 1) or 1)
+        self.form["page_size"] = int(requestForm.get("page_size", 5) or 5)
 
     def display(self, request, params={}):
         page_list = self.get_service().search(self.form, page_number=1)

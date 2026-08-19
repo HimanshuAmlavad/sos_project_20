@@ -1,5 +1,6 @@
 from service.dao.BaseDAO import BaseDAO
 from service.models import Fee
+from service.utility.DataValidator import DataValidator
 
 
 class FeeDAO(BaseDAO):
@@ -11,3 +12,10 @@ class FeeDAO(BaseDAO):
 
     def populate(self, obj):
         return obj
+
+    def get_where_conditions(self, query, params):
+        value = params.get("fee_id", 0)
+        if DataValidator.isNotNull(value) and value != 0:
+            query = query.filter(fee_id=int(value))
+        
+        return query

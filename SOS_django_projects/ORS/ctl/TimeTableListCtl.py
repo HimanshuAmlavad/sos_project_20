@@ -39,6 +39,7 @@ class TimeTableListCtl(BaseCtl):
         self.form["course_id"] = request_form.get("courseId", 0)
         self.form["subject_id"] = request_form.get("subjectId", 0)
         self.form["page_number"] = int(request_form.get("page_number", 1) or 1)
+        self.form["page_size"] = int(request_form.get("page_size", 5) or 5)
 
     def display(self, request, params={}):
         page_list = self.get_service().search(self.form, page_number=1)

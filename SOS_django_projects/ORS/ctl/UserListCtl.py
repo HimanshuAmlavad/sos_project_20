@@ -21,13 +21,14 @@ class UserListCtl(BaseCtl):
         return self.preload_data
 
     def request_to_form(self, requestForm):
-        self.form["firstName"] = requestForm.get("firstName", None)
-        self.form["lastName"] = requestForm.get("lastName", None)
-        self.form["login"] = requestForm.get("login", None)
-        self.form["mobileNumber"] = requestForm.get("mobileNumber", None)
-        self.form["gender"] = requestForm.get("gender", None)
-        self.form["role_id"] = requestForm.get("role_id", None)
+        self.form["firstName"] = requestForm.get("firstName", "")
+        self.form["lastName"] = requestForm.get("lastName", "")
+        self.form["login"] = requestForm.get("login", "")
+        self.form["mobileNumber"] = requestForm.get("mobileNumber", "")
+        self.form["gender"] = requestForm.get("gender", "")
+        self.form["role_id"] = requestForm.get("role_id", "")
         self.form["page_number"] = int(requestForm.get("page_number", 1))
+        self.form["page_size"] = int(requestForm.get("page_size", 5) or 5)
 
     def display(self, request, params={}):
         self.page_list = self.get_service().search(self.form, page_number=1)

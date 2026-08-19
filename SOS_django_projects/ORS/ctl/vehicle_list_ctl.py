@@ -6,8 +6,9 @@ from .BaseCtl import BaseCtl
 class VehicleListCtl(BaseCtl):
 
     def request_to_form(self, requestForm):
-        self.form['vehicle_no'] = requestForm.get('vehicleNo', None)
+        self.form['vehicle_no'] = requestForm.get('vehicleNo', "")
         self.form['page_number'] = int(requestForm.get('page_number', 1) or 1)
+        self.form['page_size'] = int(requestForm.get('page_size', 5) or 5)
 
     def display(self, request, params={}):
         page_list = self.get_service().search(self.form, page_number=1)

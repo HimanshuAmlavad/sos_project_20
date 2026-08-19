@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Form</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        .text-danger {
+            display: block;
+            min-height: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+{% include './Header.html' %}
+
+<div class="container mt-5 mb-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8 col-md-10">
+
+            <div class="card shadow">
+
+                <!-- Card Header -->
+                <div class="card-header bg-primary text-white">
+
+                    <h4 class="text-center mb-0">
+
+                        {% if form.id > 0 %}
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Update Customer
+                        {% else %}
+                        <i class="fa-solid fa-user-plus"></i>
+                        Add Customer
+                        {% endif %}
+
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <!-- Message -->
+                        {% if form.message %}
+
+                        {% if form.error %}
+
+                        <div class="alert alert-danger alert-dismissible fade show"
+                             role="alert">
+
+                            <i class="fa-solid fa-circle-xmark"></i>
+                            {{ form.message }}
+
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="alert"
+                                    aria-label="Close">
+
+                                <span aria-hidden="true">&times;</span>
+
+                            </button>
+
+                        </div>
+
+                        {% else %}
+
+                        <div class="alert alert-success alert-dismissible fade show"
+                             role="alert">
+
+                            <i class="fa-solid fa-circle-check"></i>
+                            {{ form.message }}
+
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="alert"
+                                    aria-label="Close">
+
+                                <span aria-hidden="true">&times;</span>
+
+                            </button>
+
+                        </div>
+
+                        {% endif %}
+
+                        {% endif %}
+
+
+                        <input type="hidden"
+                               name="id"
+                               value="{{ form.id }}">
+
+
+                        <!-- ================= ROW 1 ================= -->
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-id-card text-primary"></i>
+                                    <strong>Customer ID:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="customerId"
+                                       value="{{ form.customer_id }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.customer_id }}
+                                </small>
+
+                            </div>
+
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-user text-success"></i>
+                                    <strong>Customer Name:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="customerName"
+                                       value="{{ form.customer_name }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.customer_name }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================= ROW 2 ================= -->
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-envelope text-warning"></i>
+                                    <strong>Email:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="email"
+                                       value="{{ form.email }}"
+                                       step="0.01"
+                                       min="0"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.email }}
+                                </small>
+
+                            </div>
+
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-phone text-success"></i>
+                                    <strong>Phone Number:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="phoneNumber"
+                                       value="{{ form.phone_number }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.phone_number }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================= ROW 3 ================= -->
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-location-dot text-info"></i>
+                                    <strong>Address:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="address"
+                                       value="{{ form.address }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.address }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <hr>
+
+
+                        <!-- ================= BUTTONS ================= -->
+
+                        <div class="text-center">
+
+                            {% if form.id > 0 %}
+
+                            <input type="submit"
+                                   name="operation"
+                                   value="update"
+                                   class="btn btn-primary">
+
+                            <a href="/ORS/CustomerList"
+                               class="btn btn-secondary">
+
+                                <i class="fa-solid fa-list"></i>
+                                List
+
+                            </a>
+
+                            {% else %}
+
+                            <input type="submit"
+                                   name="operation"
+                                   value="save"
+                                   class="btn btn-success">
+
+                            <a href="/ORS/Customer"
+                               class="btn btn-warning">
+
+                                <i class="fa-solid fa-rotate-right"></i>
+                                Reset
+
+                            </a>
+
+                            {% endif %}
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% include "./Footer.html" %}
+
+</body>
+</html>

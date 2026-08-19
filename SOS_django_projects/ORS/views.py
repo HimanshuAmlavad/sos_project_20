@@ -66,6 +66,8 @@ from ORS.ctl.product_ctl import ProductCtl
 from ORS.ctl.product_list_ctl import ProductListCtl
 from ORS.ctl.order_ctl import OrderCtl
 from ORS.ctl.order_list_ctl import OrderListCtl
+from ORS.ctl.customer_ctl import CustomerCtl
+from ORS.ctl.customer_list_ctl import CustomerListCtl
 
 def info(request, page, action):
     """Log incoming request details (method, page, action, and path) to stdout."""
