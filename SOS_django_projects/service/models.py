@@ -422,3 +422,14 @@ class Customer(models.Model):
 
     class Meta:
         db_table = "customer"
+
+class Patient(models.Model):
+
+    patient_id = models.IntegerField(unique=True)
+    patient_name = models.CharField(max_length=100)
+    disease = models.CharField(max_length=150)
+    doctor_name = models.CharField(max_length=100)
+    admission_date = models.DateField()
+
+    class Meta:
+        db_table = "patient"

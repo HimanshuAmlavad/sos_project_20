@@ -2,7 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Patient List</title>
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Card List</title>
 
     <!-- Bootstrap 4 -->
 
@@ -17,7 +26,7 @@
     {% csrf_token %}
 
     <div class="text-center mb-4">
-        <h2>Patient List</h2>
+        <h2>Order List</h2>
     </div>
 
     {% if pageList and pageList.object_list %}
@@ -27,10 +36,10 @@
 
         <div class="col-md-4">
             <input type="text"
-                   name="patientId"
+                   name="orderId"
                    class="form-control"
-                   placeholder="Enter Patient Id"
-                   value="{{ form.patient_id }}">
+                   placeholder="Enter Order Id"
+                   value="{{ form.order_id }}">
         </div>
 
         <div class="col-md-2">
@@ -51,11 +60,11 @@
 
             <tr>
                 <th>S No.</th>
-                <th>Patient Id</th>
-                <th>Patient Name</th>
-                <th>Disease</th>
-                <th>Admission Date</th>
-                <th>Doctor Name</th>
+                <th>Order Id</th>
+                <th>Amount</th>
+                <th>Customer Id</th>
+                <th>Order Date</th>
+                <th>Status</th>
                 <th>Edit | Delete</th>
             </tr>
 
@@ -68,18 +77,18 @@
             <tr>
 
                 <td>{{ forloop.counter }}</td>
-                <td>{{ l.patient_id }}</td>
-                <td>{{ l.patient_name }}</td>
-                <td>{{ l.disease }}</td>
-                <td>{{ l.admission_date }}</td>
-                <td>{{ l.doctor_name }}</td>
+                <td>{{ l.order_id }}</td>
+                <td>{{ l.amount }}</td>
+                <td>{{ l.customer_id }}</td>
+                <td>{{ l.order_date }}</td>
+                <td>{{ l.status }}</td>
 
                 <td>
-                    <a href="/ORS/Patient/edit/{{l.id}}/" class="btn btn-warning btn-sm">
+                    <a href="/ORS/Order/edit/{{l.id}}/" class="btn btn-warning btn-sm">
                         Edit
                     </a>
 
-                    <a href="/ORS/PatientList/delete/{{l.id}}/" class="btn btn-danger btn-sm">
+                    <a href="/ORS/OrderList/delete/{{l.id}}/" class="btn btn-danger btn-sm">
                         Delete
                     </a>
                 </td>

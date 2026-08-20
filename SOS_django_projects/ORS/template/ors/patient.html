@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Patient Form</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        .text-danger {
+            display: block;
+            min-height: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+{% include './Header.html' %}
+
+<div class="container mt-5 mb-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8 col-md-10">
+
+            <div class="card shadow">
+
+                <!-- Card Header -->
+                <div class="card-header bg-primary text-white">
+
+                    <h4 class="text-center mb-0">
+
+                        {% if form.id > 0 %}
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Update Patient
+                        {% else %}
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Add Patient
+                        {% endif %}
+
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <!-- Message -->
+                        {% if form.message %}
+
+                        {% if form.error %}
+
+                        <div class="alert alert-danger alert-dismissible fade show"
+                             role="alert">
+
+                            <i class="fa-solid fa-circle-xmark"></i>
+                            {{ form.message }}
+
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="alert"
+                                    aria-label="Close">
+
+                                <span aria-hidden="true">&times;</span>
+
+                            </button>
+
+                        </div>
+
+                        {% else %}
+
+                        <div class="alert alert-success alert-dismissible fade show"
+                             role="alert">
+
+                            <i class="fa-solid fa-circle-check"></i>
+                            {{ form.message }}
+
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="alert"
+                                    aria-label="Close">
+
+                                <span aria-hidden="true">&times;</span>
+
+                            </button>
+
+                        </div>
+
+                        {% endif %}
+
+                        {% endif %}
+
+
+                        <input type="hidden"
+                               name="id"
+                               value="{{ form.id }}">
+
+
+                        <!-- ================= ROW 1 ================= -->
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-receipt text-primary"></i>
+                                    <strong>Patient ID:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="patientId"
+                                       value="{{ form.patient_id }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.patient_id }}
+                                </small>
+
+                            </div>
+
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-indian-rupee-sign text-success"></i>
+                                    <strong>Patient Name:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="patientName"
+                                       value="{{ form.patient_name }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.patient_name }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================= ROW 2 ================= -->
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-user text-warning"></i>
+                                    <strong>Disease:</strong>
+                                </label>
+
+                                <input type="text"
+                                       name="disease"
+                                       value="{{ form.disease }}"
+                                       step="0.01"
+                                       min="0"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.disease }}
+                                </small>
+
+                            </div>
+
+
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-calendar-days text-success"></i>
+                                    <strong>Admission Date:</strong>
+                                </label>
+
+                                <input type="date"
+                                       name="admissionDate"
+                                       value="{{ form.admission_date }}"
+                                       class="form-control">
+
+                                <small class="text-danger">
+                                    {{ form.inputError.admission_date }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================= ROW 3 ================= -->
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+
+                                <label>
+                                    <i class="fa-solid fa-circle-info text-warning"></i>
+                                    <strong>Doctor Name:</strong>
+                                </label>
+
+                                {{ form.preload_data.doctor_select|safe }}
+
+                                <small class="text-danger">
+                                    {{ form.inputError.doctor_name }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <hr>
+
+
+                        <!-- ================= BUTTONS ================= -->
+
+                        <div class="text-center">
+
+                            {% if form.id > 0 %}
+
+                            <input type="submit"
+                                   name="operation"
+                                   value="update"
+                                   class="btn btn-primary">
+
+                            <a href="/ORS/DoctorList"
+                               class="btn btn-secondary">
+
+                                <i class="fa-solid fa-list"></i>
+                                List
+
+                            </a>
+
+                            {% else %}
+
+                            <input type="submit"
+                                   name="operation"
+                                   value="save"
+                                   class="btn btn-success">
+
+                            <a href="/ORS/Doctor"
+                               class="btn btn-warning">
+
+                                <i class="fa-solid fa-rotate-right"></i>
+                                Reset
+
+                            </a>
+
+                            {% endif %}
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% include "./Footer.html" %}
+
+</body>
+</html>

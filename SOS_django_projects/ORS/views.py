@@ -68,6 +68,8 @@ from ORS.ctl.order_ctl import OrderCtl
 from ORS.ctl.order_list_ctl import OrderListCtl
 from ORS.ctl.customer_ctl import CustomerCtl
 from ORS.ctl.customer_list_ctl import CustomerListCtl
+from ORS.ctl.patient_ctl import PatientCtl
+from ORS.ctl.patint_list_ctl import PatientListCtl
 
 def info(request, page, action):
     """Log incoming request details (method, page, action, and path) to stdout."""
