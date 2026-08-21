@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Patient Form</title>
+    <title>Bank Account Form</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
@@ -39,10 +39,10 @@
 
                         {% if form.id > 0 %}
                         <i class="fa-solid fa-pen-to-square"></i>
-                        Update Patient
+                        Update Bank Account
                         {% else %}
-                        <i class="fa-solid fa-hospital-user"></i>
-                        Add Patient
+                        <i class="fa-solid fa-building-columns"></i>
+                        Add Bank Account
                         {% endif %}
 
                     </h4>
@@ -113,17 +113,17 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-id-card text-primary"></i>
-                                    <strong>Patient ID:</strong>
+                                    <i class="fa-solid fa-credit-card text-primary"></i>
+                                    <strong>Account Number:</strong>
                                 </label>
 
                                 <input type="text"
-                                       name="patientId"
-                                       value="{{ form.patient_id }}"
+                                       name="accountNumber"
+                                       value="{{ form.account_number }}"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.patient_id }}
+                                    {{ form.inputError.account_number }}
                                 </small>
 
                             </div>
@@ -133,16 +133,16 @@
 
                                 <label>
                                     <i class="fa-solid fa-user text-success"></i>
-                                    <strong>Patient Name:</strong>
+                                    <strong>Holder Name:</strong>
                                 </label>
 
                                 <input type="text"
-                                       name="patientName"
-                                       value="{{ form.patient_name }}"
+                                       name="holderName"
+                                       value="{{ form.holder_name }}"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.patient_name }}
+                                    {{ form.inputError.holder_name }}
                                 </small>
 
                             </div>
@@ -157,19 +157,19 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-virus text-warning"></i>
-                                    <strong>Disease:</strong>
+                                    <i class="fa-solid fa-wallet text-warning"></i>
+                                    <strong>Balance:</strong>
                                 </label>
 
                                 <input type="text"
-                                       name="disease"
-                                       value="{{ form.disease }}"
+                                       name="balance"
+                                       value="{{ form.balance }}"
                                        step="0.01"
                                        min="0"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.disease }}
+                                    {{ form.inputError.balance }}
                                 </small>
 
                             </div>
@@ -178,17 +178,17 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-calendar-check text-success"></i>
-                                    <strong>Admission Date:</strong>
+                                    <i class="fa-solid fa-location-dot text-success"></i>
+                                    <strong>Branch Name:</strong>
                                 </label>
 
-                                <input type="date"
-                                       name="admissionDate"
-                                       value="{{ form.admission_date }}"
+                                <input type="text"
+                                       name="branchName"
+                                       value="{{ form.branch_name }}"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.admission_date }}
+                                    {{ form.inputError.branch_name }}
                                 </small>
 
                             </div>
@@ -199,17 +199,18 @@
                         <!-- ================= ROW 3 ================= -->
 
                         <div class="form-row">
+
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-user-doctor text-warning"></i>
-                                    <strong>Doctor Name:</strong>
+                                    <i class="fa-solid fa-list-check text-warning"></i>
+                                    <strong>Account Type:</strong>
                                 </label>
 
-                                {{ form.preload_data.doctor_select|safe }}
+                                {{ form.preload_data.account_select|safe }}
 
                                 <small class="text-danger">
-                                    {{ form.inputError.doctor_name }}
+                                    {{ form.inputError.account_type }}
                                 </small>
 
                             </div>
@@ -231,7 +232,7 @@
                                    value="update"
                                    class="btn btn-primary">
 
-                            <a href="/ORS/PatientList"
+                            <a href="/ORS/BankAccountList"
                                class="btn btn-secondary">
 
                                 <i class="fa-solid fa-list"></i>
@@ -246,7 +247,7 @@
                                    value="save"
                                    class="btn btn-success">
 
-                            <a href="/ORS/Patient"
+                            <a href="/ORS/BankAccount"
                                class="btn btn-warning">
 
                                 <i class="fa-solid fa-rotate-right"></i>

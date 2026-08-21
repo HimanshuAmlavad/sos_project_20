@@ -2,16 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Credit Card List</title>
+    <title>Patient List</title>
 
     <!-- Bootstrap 4 -->
 
@@ -26,7 +17,7 @@
     {% csrf_token %}
 
     <div class="text-center mb-4">
-        <h2>Order List</h2>
+        <h2><i class="fa-solid fa-hospital-user text-primary"></i> Patient List</h2>
     </div>
 
     {% if pageList and pageList.object_list %}
@@ -36,10 +27,10 @@
 
         <div class="col-md-4">
             <input type="text"
-                   name="orderId"
+                   name="patientId"
                    class="form-control"
-                   placeholder="Enter Order Id"
-                   value="{{ form.order_id }}">
+                   placeholder="Enter Patient Id"
+                   value="{{ form.patient_id }}">
         </div>
 
         <div class="col-md-2">
@@ -59,13 +50,13 @@
             <thead class="thead-light">
 
             <tr>
-                <th>S No.</th>
-                <th>Order Id</th>
-                <th>Amount</th>
-                <th>Customer Id</th>
-                <th>Order Date</th>
-                <th>Status</th>
-                <th>Edit | Delete</th>
+                <th><i class="fa-solid fa-list-ol"></i> S No.</th>
+                <th><i class="fa-solid fa-id-card"></i> Patient Id</th>
+                <th><i class="fa-solid fa-user"></i> Patient Name</th>
+                <th><i class="fa-solid fa-virus"></i> Disease</th>
+                <th><i class="fa-solid fa-calendar-days"></i> Admission Date</th>
+                <th><i class="fa-solid fa-user-doctor"></i> Doctor Name</th>
+                <th><i class="fa-solid fa-gear"></i> Edit | Delete</th>
             </tr>
 
             </thead>
@@ -77,18 +68,20 @@
             <tr>
 
                 <td>{{ forloop.counter }}</td>
-                <td>{{ l.order_id }}</td>
-                <td>{{ l.amount }}</td>
-                <td>{{ l.customer_id }}</td>
-                <td>{{ l.order_date }}</td>
-                <td>{{ l.status }}</td>
+                <td>{{ l.patient_id }}</td>
+                <td>{{ l.patient_name }}</td>
+                <td>{{ l.disease }}</td>
+                <td>{{ l.admission_date }}</td>
+                <td>{{ l.doctor_name }}</td>
 
                 <td>
-                    <a href="/ORS/Order/edit/{{l.id}}/" class="btn btn-warning btn-sm">
+                    <a href="/ORS/Patient/edit/{{l.id}}/" class="btn btn-warning btn-sm">
+                        <i class="fa-solid fa-pen-to-square"></i>
                         Edit
                     </a>
 
-                    <a href="/ORS/OrderList/delete/{{l.id}}/" class="btn btn-danger btn-sm">
+                    <a href="/ORS/PatientList/delete/{{l.id}}/" class="btn btn-danger btn-sm">
+                        <i class="fa-solid fa-trash"></i>
                         Delete
                     </a>
                 </td>
@@ -117,7 +110,7 @@
     </div>
 
        <div class="col-md-4 text-center">
-                <h5>Page : {{ pageList.number }}</h5>
+                <h5><i class="fa-solid fa-file-lines"></i> Page : {{ pageList.number }}</h5>
        </div>
 
     <div class="col-md-4 text-right">
@@ -138,7 +131,10 @@
 
     <div class="text-center">
 
-        <h3 class="text-danger">No Record Found</h3>
+        <h3 class="text-danger">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            No Record Found
+        </h3>
 
         <input type="submit"
                value="back"

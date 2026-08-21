@@ -433,3 +433,15 @@ class Patient(models.Model):
 
     class Meta:
         db_table = "patient"
+
+
+class BankAccount(models.Model):
+
+    account_number = models.CharField(max_length=20, unique=True)
+    holder_name = models.CharField(max_length=100)
+    account_type = models.CharField(max_length=50)
+    balance = models.DecimalField(max_digits=12, decimal_places=2)
+    branch_name = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "bank_account"
