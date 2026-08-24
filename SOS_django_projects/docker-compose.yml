@@ -14,8 +14,8 @@ services:
     image: mysql:8.0
     container_name: db-container
     environment:
-      MYSQL_DATABASE: sos_db
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sos_db_grand
+      MYSQL_ROOT_PASSWORD: Amlavad@2002
     ports:
       - "3308:3306"
     volumes:

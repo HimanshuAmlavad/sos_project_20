@@ -3,6 +3,8 @@ from django.shortcuts import render
 from service.service.BookService import BookService
 from .BaseCtl import BaseCtl
 
+
+
 class BookListCtl(BaseCtl):
 
     def request_to_form(self, requestForm):

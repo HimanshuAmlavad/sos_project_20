@@ -166,6 +166,24 @@ DATABASES = {
 #     }
 # }
 
+# for docker 1
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "dj_db_conn_pool.backends.mysql",
+#         "NAME": "sos_db_grand",
+#         "USER": "root",
+#         "PASSWORD": "Amlavad@2002",
+#         "HOST": "db",
+#         "PORT": "3306",
+#
+#         "POOL_OPTIONS": {
+#             "POOL_SIZE": 10,
+#             "MAX_OVERFLOW": 90,
+#             "RECYCLE": 600,
+#         }
+#     }
+# }
+
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "dj_db_conn_pool.backends.mysql",

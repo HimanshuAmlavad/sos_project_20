@@ -63,60 +63,6 @@ class BaseDAO(ABC):
     def find_by_unique_key(self, pk):
         return self.get(pk)
 
-    # def apply_filters(self, q, params):
-    #     # apply all key-value pairs in params as filters to the QuerySet q
-    #     for key, value in params.items():
-    #         if key in (
-    #             "has_next",
-    #             "has_previous",
-    #             "start_index",
-    #             "end_index",
-    #             "error",
-    #             "message",
-    #             "inputError",
-    #             "page_number",
-    #             "page_size",
-    #         ):
-    #             continue
-    #
-    #
-    #         if DataValidator.isNotNull(value):
-    #             if key == "id" and value == 0:
-    #                 continue
-    #             try:
-    #                 field = self.get_model()._meta.get_field(key)
-    #                 if isinstance(field, (db_models.CharField, db_models.TextField)):
-    #                     q = q.filter(**{f"{key}__iexact": value})
-    #                 else:
-    #                     q = q.filter(**{key: value})
-    #             except Exception:
-    #                 q = q.filter(**{key: value})
-    #     return q
-    #
-    # def search(self, params, page_number=0, page_size=5):
-    #     """
-    #     Search records with subclass-defined filters and optional pagination.
-    #
-    #     Args:
-    #         params      : dict of filter criteria passed to apply_filters()
-    #         page_number : page to return (1-based); pass 0 to get all records
-    #         page_size   : number of records per page (default 10)
-    #
-    #     Returns:
-    #         Page object when page_number > 0, QuerySet when page_number == 0
-    #     """
-    #     # Start with all+ records for this model
-    #     q = self.get_model().objects.filter()
-    #
-    #     # Delegate field-level filtering to the subclass
-    #     q = self.apply_filters(q, params)
-    #     # page_number == 0 means return all records without pagination
-    #     if page_number == 0:
-    #         return q
-    #
-    #     # Apply pagination and return the requested page
-    #     paginator = Paginator(q, page_size)
-    #     return paginator.get_page(page_number)
 
     def search(self, params):
         page_no = int(params.get("page_no", 1))

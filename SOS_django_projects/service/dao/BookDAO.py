@@ -4,6 +4,8 @@ from service.utility.DataValidator import DataValidator
 
 
 class BookDAO(BaseDAO):
+
+
     def get_model(self):
         return Book
 

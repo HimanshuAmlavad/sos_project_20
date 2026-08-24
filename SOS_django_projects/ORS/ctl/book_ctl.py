@@ -6,6 +6,8 @@ from service.models import Book
 from service.service.BookService import BookService
 from service.utility.DataValidator import DataValidator
 
+
+
 class BookCtl(BaseCtl):
 
     def preload(self, request):
