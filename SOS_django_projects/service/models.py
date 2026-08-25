@@ -445,3 +445,24 @@ class BankAccount(models.Model):
 
     class Meta:
         db_table = "bank_account"
+
+class Complaint(models.Model):
+
+    complaint_id = models.IntegerField()
+    complaint_type = models.CharField(max_length=50)
+    description = models.CharField(max_length=500)
+    complaint_date = models.DateField()
+    status = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = "complaint"
+
+class Hotel(models.Model):
+    hotel_id = models.IntegerField()
+    hotel_name = models.CharField(max_length=100)
+    location = models.CharField(max_length=200)
+    rating = models.DecimalField(max_digits=2, decimal_places=1)
+    contact_no = models.CharField(max_length=15)
+
+    class Meta:
+        db_table = "hotel"
