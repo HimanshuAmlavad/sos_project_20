@@ -74,6 +74,8 @@ from ORS.ctl.bank_account_ctl import BankAccountCtl
 from ORS.ctl.bank_account_list_ctl import BankAccountListCtl
 from ORS.ctl.complaint_ctl import ComplaintCtl
 from ORS.ctl.complaint_lsit_ctl import ComplaintListCtl
+from ORS.ctl.event_ctl import EventCtl
+from ORS.ctl.event_list_ctl import EventListCtl
 
 def info(request, page, action):
     """Log incoming request details (method, page, action, and path) to stdout."""

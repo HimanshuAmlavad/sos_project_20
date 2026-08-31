@@ -466,3 +466,14 @@ class Hotel(models.Model):
 
     class Meta:
         db_table = "hotel"
+
+class Event(models.Model):
+    event_id = models.IntegerField()
+    event_name = models.CharField(max_length=100)
+    event_date = models.DateField()
+    venue = models.CharField(max_length=200)
+    organizer = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "Event"
+        

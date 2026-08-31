@@ -59,7 +59,7 @@ class PatientCtl(BaseCtl):
         # print('F2M======================>', obj.id)
         obj.patient_id = int(self.form.get("patient_id", 0))
         obj.patient_name = self.form.get("patient_name", "")
-        obj.disease = self.form.get("disease", 0)
+        obj.disease = self.form.get("disease", "")
         # print('F2M======================>', obj.student_name)
         obj.admission_date = self.form.get("admission_date", "")
         obj.doctor_name = self.form.get("doctor_name", "")
