@@ -14,8 +14,8 @@ class EventDAO(BaseDAO):
         return obj
 
     def get_where_conditions(self, query, params):
-        value = params.get('event_id',0)
-        if DataValidator.isNotNull(value) or value != 0:
+        value = params.get('event_id', 0)
+        if DataValidator.isNotNull(value) and value != 0:
             query = query.filter(event_id=int(value))
 
-            return query
+        return query

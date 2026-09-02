@@ -1,5 +1,6 @@
 from time import sleep
 
+from MySQLdb.constants.FLAG import UNIQUE
 from django.db import models
 from django.forms.models import model_to_dict
 
@@ -476,4 +477,35 @@ class Event(models.Model):
 
     class Meta:
         db_table = "Event"
-        
+
+
+class Payment(models.Model):
+    payment_id = models.CharField(max_length=50, unique=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_date = models.DateField()
+    payment_method = models.CharField(max_length=50)
+    transaction_id = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "Payment"
+
+
+class Room(models.Model):
+    room_id = models.IntegerField(unique=True)
+    room_no = models.IntegerField(unique=True)
+    room_type = models.CharField(max_length=50)
+    price_per_day = models.IntegerField()
+    availability = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "Room"
+
+class Vendor(models.Model):
+    vendor_id = models.IntegerField(unique=True)
+    vendor_name = models.CharField(max_length=100)
+    mobile_no = models.CharField(max_length=15)
+    address = models.CharField(max_length=255)
+    service_type = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "Vendor"

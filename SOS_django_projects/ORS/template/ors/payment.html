@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Event Form</title>
+    <title>Payment Form</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
@@ -39,10 +39,10 @@
 
                         {% if form.id > 0 %}
                         <i class="fa-solid fa-pen-to-square"></i>
-                        Update Event
+                        Update Payment
                         {% else %}
-                        <i class="fa-solid fa-hospital-user"></i>
-                        Add Event
+                        <i class="fa-solid fa-credit-card"></i>
+                        Add Payment
                         {% endif %}
 
                     </h4>
@@ -114,16 +114,16 @@
 
                                 <label>
                                     <i class="fa-solid fa-id-card text-primary"></i>
-                                    <strong>Event ID:</strong>
+                                    <strong>Payment ID:</strong>
                                 </label>
 
                                 <input type="text"
-                                       name="eventId"
-                                       value="{{ form.event_id }}"
+                                       name="paymentId"
+                                       value="{{ form.payment_id }}"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.event_id }}
+                                    {{ form.inputError.payment_id }}
                                 </small>
 
                             </div>
@@ -132,17 +132,17 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-user text-success"></i>
-                                    <strong>Event Name:</strong>
+                                    <i class="fa-solid fa-indian-rupee-sign text-success"></i>
+                                    <strong>Amount:</strong>
                                 </label>
 
                                 <input type="text"
-                                       name="eventName"
-                                       value="{{ form.event_name }}"
+                                       name="amount"
+                                       value="{{ form.amount }}"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.event_name }}
+                                    {{ form.inputError.amount }}
                                 </small>
 
                             </div>
@@ -157,19 +157,19 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-virus text-warning"></i>
-                                    <strong>Venue:</strong>
+                                    <i class="fa-solid fa-arrow-right-arrow-left text-warning"></i>
+                                    <strong>Transaction Id:</strong>
                                 </label>
 
                                 <input type="text"
-                                       name="venue"
-                                       value="{{ form.venue }}"
+                                       name="transactionId"
+                                       value="{{ form.transaction_id }}"
                                        step="0.01"
                                        min="0"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.venue }}
+                                    {{ form.inputError.transaction_id }}
                                 </small>
 
                             </div>
@@ -179,16 +179,16 @@
 
                                 <label>
                                     <i class="fa-solid fa-calendar-check text-success"></i>
-                                    <strong>Event Date:</strong>
+                                    <strong>Payment Date:</strong>
                                 </label>
 
                                 <input type="date"
-                                       name="eventDate"
-                                       value="{{ form.event_date }}"
+                                       name="paymentDate"
+                                       value="{{ form.payment_date }}"
                                        class="form-control">
 
                                 <small class="text-danger">
-                                    {{ form.inputError.event_date }}
+                                    {{ form.inputError.payment_date }}
                                 </small>
 
                             </div>
@@ -202,17 +202,14 @@
                             <div class="form-group col-md-6">
 
                                 <label>
-                                    <i class="fa-solid fa-user-doctor text-warning"></i>
-                                    <strong>Organizer:</strong>
+                                    <i class="fa-solid fa-wallet text-warning"></i>
+                                    <strong>Payment Method:</strong>
                                 </label>
 
-                                <input type="text"
-                                       name="organizer"
-                                       value="{{ form.organizer }}"
-                                       class="form-control">
+                                {{ form.preload_data.method_select|safe }}
 
                                 <small class="text-danger">
-                                    {{ form.inputError.organizer}}
+                                    {{ form.inputError.payment_method }}
                                 </small>
 
                             </div>
@@ -234,7 +231,7 @@
                                    value="update"
                                    class="btn btn-primary">
 
-                            <a href="/ORS/EventList"
+                            <a href="/ORS/PaymentList"
                                class="btn btn-secondary">
 
                                 <i class="fa-solid fa-list"></i>
@@ -249,7 +246,7 @@
                                    value="save"
                                    class="btn btn-success">
 
-                            <a href="/ORS/Event"
+                            <a href="/ORS/Payment"
                                class="btn btn-warning">
 
                                 <i class="fa-solid fa-rotate-right"></i>
