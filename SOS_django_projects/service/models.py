@@ -509,3 +509,13 @@ class Vendor(models.Model):
 
     class Meta:
         db_table = "Vendor"
+
+class Service(models.Model):
+    service_id = models.IntegerField(unique=True)
+    service_name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.CharField(max_length=500)
+    service_category = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "Service"

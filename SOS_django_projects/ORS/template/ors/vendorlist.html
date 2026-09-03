@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Movie List</title>
+    <title>Vendor List</title>
 
     <!-- Bootstrap 4 -->
 
@@ -17,7 +17,7 @@
     {% csrf_token %}
 
     <div class="text-center mb-4">
-        <h2>Movie List</h2>
+        <h2>Vendor List</h2>
     </div>
 
     {% if pageList and pageList.object_list %}
@@ -27,10 +27,10 @@
 
         <div class="col-md-4">
             <input type="text"
-                   name="movieNmae"
+                   name="VendorName"
                    class="form-control"
-                   placeholder="Enter Movie Id"
-                   value="{{ form.movie_name }}">
+                   placeholder="Enter Vendor Name"
+                   value="{{ form.vendor_name }}">
         </div>
 
         <div class="col-md-2">
@@ -51,12 +51,11 @@
 
             <tr>
                 <th>S No.</th>
-                <th>Movie Id</th>
-                <th>Movie Code</th>
-                <th>movie Name</th>
-                <th>Director Name</th>
-                <th>Genre</th>
-                <th>Status</th>
+                <th>Vendor Id</th>
+                <th>Mobile No</th>
+                <th>Vendor Name</th>
+                <th>Address</th>
+                <th>Service Type</th>
                 <th>Edit | Delete</th>
             </tr>
 
@@ -69,19 +68,18 @@
             <tr>
 
                 <td>{{ forloop.counter }}</td>
-                <td>{{ l.movie_id }}</td>
-                <td>{{ l.movie_code }}</td>
-                <td>{{ l.movie_Name }}</td>
-                <td>{{ l.director_name }}</td>
-                <td>{{ l.genre }}</td>
-                <td>{{ l.status }}</td>
+                <td>{{ l.vendor_id }}</td>
+                <td>{{ l.mobile_no }}</td>
+                <td>{{ l.vendor_Name }}</td>
+                <td>{{ l.address }}</td>
+                <td>{{ l.service_type }}</td>
 
                 <td>
-                    <a href="/ORS/Movie/edit/{{l.id}}/" class="btn btn-warning btn-sm">
+                    <a href="/ORS/Vendor/edit/{{l.id}}/" class="btn btn-warning btn-sm">
                         Edit
                     </a>
 
-                    <a href="/ORS/MovieList/delete/{{l.id}}/" class="btn btn-danger btn-sm">
+                    <a href="/ORS/VendorList/delete/{{l.id}}/" class="btn btn-danger btn-sm">
                         Delete
                     </a>
                 </td>
