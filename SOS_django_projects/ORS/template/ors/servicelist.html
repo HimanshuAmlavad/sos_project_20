@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vendor List</title>
+    <title>Service List</title>
 
     <!-- Bootstrap 4 -->
 
@@ -17,7 +17,7 @@
     {% csrf_token %}
 
     <div class="text-center mb-4">
-        <h2>Vendor List</h2>
+        <h2>Service List</h2>
     </div>
 
     {% if pageList and pageList.object_list %}
@@ -27,10 +27,10 @@
 
         <div class="col-md-4">
             <input type="text"
-                   name="vendorName"
+                   name="serviceName"
                    class="form-control"
-                   placeholder="Enter Vendor Name"
-                   value="{{ form.vendor_name }}">
+                   placeholder="Enter Service Name"
+                   value="{{ form.service_name }}">
         </div>
 
         <div class="col-md-2">
@@ -51,11 +51,11 @@
 
             <tr>
                 <th>S No.</th>
-                <th>Vendor Id</th>
-                <th>Mobile No</th>
-                <th>Vendor Name</th>
-                <th>Address</th>
-                <th>Service Type</th>
+                <th>Service Id</th>
+                <th>Description</th>
+                <th>Service Name</th>
+                <th>Price</th>
+                <th>Service Category</th>
                 <th>Edit | Delete</th>
             </tr>
 
@@ -68,18 +68,18 @@
             <tr>
 
                 <td>{{ forloop.counter }}</td>
-                <td>{{ l.vendor_id }}</td>
-                <td>{{ l.mobile_no }}</td>
-                <td>{{ l.vendor_name }}</td>
-                <td>{{ l.address }}</td>
-                <td>{{ l.service_type }}</td>
+                <td>{{ l.service_id }}</td>
+                <td>{{ l.description }}</td>
+                <td>{{ l.service_name }}</td>
+                <td>{{ l.price }}</td>
+                <td>{{ l.service_category }}</td>
 
                 <td>
-                    <a href="/ORS/Vendor/edit/{{l.id}}/" class="btn btn-warning btn-sm">
+                    <a href="/ORS/Service/edit/{{l.id}}/" class="btn btn-warning btn-sm">
                         Edit
                     </a>
 
-                    <a href="/ORS/VendorList/delete/{{l.id}}/" class="btn btn-danger btn-sm">
+                    <a href="/ORS/ServiceList/delete/{{l.id}}/" class="btn btn-danger btn-sm">
                         Delete
                     </a>
                 </td>

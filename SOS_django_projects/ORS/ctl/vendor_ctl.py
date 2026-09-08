@@ -36,7 +36,7 @@ class VendorCtl(BaseCtl):
         self.form["id"] = int(request.get("id", 0) or 0)
         # print('R2F =====================>', self.form["id"])
         self.form["vendor_id"] = request.get("vendorId", 0)
-        self.form["mobile_no"] = request.get("vendorNo", "")
+        self.form["mobile_no"] = request.get("mobileNo", "")
         self.form["vendor_name"] = request.get("vendorName", "")
         # print('R2F =====================>', self.form["vendor_name"])
         self.form[" address"] = request.get(" address", "")
