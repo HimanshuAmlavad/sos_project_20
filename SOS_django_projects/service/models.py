@@ -519,3 +519,14 @@ class Service(models.Model):
 
     class Meta:
         db_table = "Service"
+
+class Doctor(models.Model):
+
+    doctor_id = models.CharField(max_length=50, unique=True)
+    doctor_name = models.CharField(max_length=100)
+    specialization = models.CharField(max_length=100)
+    experience = models.IntegerField()
+    contact_no = models.CharField(max_length=15)
+
+    class Meta:
+        db_table = "Doctor"
