@@ -1,4 +1,6 @@
-﻿from ORSAPI.rest.BaseRestCtl import BaseRestCtl
+﻿
+
+from ORSAPI.rest.BaseRestCtl import BaseRestCtl
 from service.models import College
 from service.Serializers import CollegeSerializers
 from service.service.CollegeService import CollegeService

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from service.models import College, Course, Role, User, Faculty, Marksheet, Student, Subject, TimeTable
+from service.models import College, Course, Role, User, Faculty, Marksheet, Student, Subject, TimeTable, Library
 
 
 class CollegeSerializers(serializers.ModelSerializer):
@@ -53,4 +53,9 @@ class SubjectSerializers(serializers.ModelSerializer):
 class TimeTableSerializers(serializers.ModelSerializer):
     class Meta:
         model = TimeTable
+        fields = "__all__"
+
+class LibrarySerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Library
         fields = "__all__"

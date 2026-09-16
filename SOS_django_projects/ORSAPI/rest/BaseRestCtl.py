@@ -40,7 +40,7 @@ class BaseRestCtl(APIView, ABC):
     # --- Response helpers ---
 
     def success_response(
-        self, data=None, message="", stcode=status.HTTP_200_OK, pagination=None
+            self, data=None, message="", stcode=status.HTTP_200_OK, pagination=None
     ):
         res_data = {
             "error": False,
@@ -51,9 +51,7 @@ class BaseRestCtl(APIView, ABC):
             res_data["pagination"] = pagination
         return Response(res_data, status=stcode)
 
-    def error_response(
-        self, errors=None, message="", stcode=status.HTTP_400_BAD_REQUEST
-    ):
+    def error_response(self, errors=None, message="", stcode=status.HTTP_400_BAD_REQUEST):
         res_data = {
             "error": True,
             "message": message,
@@ -142,19 +140,19 @@ class BaseRestCtl(APIView, ABC):
 
             table = Table(table_data, colWidths=[col_width] * len(headers), repeatRows=1)
             table.setStyle(TableStyle([
-                ("BACKGROUND",    (0, 0), (-1, 0),  colors.HexColor("#2C3E50")),
-                ("TEXTCOLOR",     (0, 0), (-1, 0),  colors.white),
-                ("FONTNAME",      (0, 0), (-1, 0),  "Helvetica-Bold"),
-                ("FONTSIZE",      (0, 0), (-1, 0),  9),
-                ("ALIGN",         (0, 0), (-1, -1), "CENTER"),
-                ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
-                ("TOPPADDING",    (0, 0), (-1, -1), 6),
+                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#2C3E50")),
+                ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+                ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+                ("FONTSIZE", (0, 0), (-1, 0), 9),
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+                ("TOPPADDING", (0, 0), (-1, -1), 6),
                 ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
-                ("FONTNAME",      (0, 1), (-1, -1), "Helvetica"),
-                ("FONTSIZE",      (0, 1), (-1, -1), 8),
+                ("FONTNAME", (0, 1), (-1, -1), "Helvetica"),
+                ("FONTSIZE", (0, 1), (-1, -1), 8),
                 ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#ECF0F1")]),
-                ("GRID",          (0, 0), (-1, -1), 0.5, colors.HexColor("#BDC3C7")),
-                ("BOX",           (0, 0), (-1, -1), 1,   colors.HexColor("#2C3E50")),
+                ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor("#BDC3C7")),
+                ("BOX", (0, 0), (-1, -1), 1, colors.HexColor("#2C3E50")),
             ]))
             elements.append(table)
 
@@ -188,11 +186,11 @@ class BaseRestCtl(APIView, ABC):
 
         if report_type == "pdf":
             print("Generating PDF report...")
-            return self.pdfReport(request,result)
+            return self.pdfReport(request, result)
 
         if report_type == "doc":
             print("Generating DOC report...")
-            return self.pdfDoc(request,result)
+            return self.pdfDoc(request, result)
 
         # When paginated, result is a Django Page object; extract the record list
         if page_number:

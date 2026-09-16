@@ -530,3 +530,14 @@ class Doctor(models.Model):
 
     class Meta:
         db_table = "Doctor"
+
+class Library(models.Model):
+
+    libraryId = models.CharField(max_length=50, unique=True)
+    libraryName = models.CharField(max_length=100)
+    address = models.CharField(max_length=250)
+    totalBooks = models.IntegerField()
+    contactNo = models.CharField(max_length=15)
+
+    class Meta:
+        db_table = "Library"

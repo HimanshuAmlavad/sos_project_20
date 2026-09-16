@@ -33,6 +33,7 @@ from .rest.UserRestCtl import (
     UserPreloadRestCtl,
     UploadUserPhotoRestCtl,
 )
+from .rest.library_list_ctl import LibraryRestCtl
 
 urlpatterns = [
     path("api/token/refresh/", TokenRefreshView.as_view()),
@@ -75,4 +76,8 @@ urlpatterns = [
     path("api/User/forgot-password/", ForgotPasswordRestCtl.as_view()),
     path("api/User/register/", UserRegistrationRestCtl.as_view()),
     path("api/User/upload-photo/<int:id>/", UploadUserPhotoRestCtl.as_view()),
+    path("api/Library/", LibraryRestCtl.as_view()),
+    path("api/Library/search/", LibraryRestCtl.search_view(), name="subject-search"),
+    path("api/Library/<int:id>/", LibraryRestCtl.as_view()),
+
 ]
