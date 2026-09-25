@@ -1,6 +1,6 @@
 from service.models import Subject, Course
 from service.utility.DataValidator import DataValidator
-from .BaseDAO import BaseDAO
+from .BaseDAO import BaseDAO, logger
 
 
 class SubjectDAO(BaseDAO):
@@ -20,8 +20,21 @@ class SubjectDAO(BaseDAO):
         return obj
 
     def get_where_conditions(self, query, params):
-        value = params.get("id", 0)
-        if DataValidator.isNotNull(value) and value != 0:
-            query = query.filter(id=int(value))
-        
+        value = params.get("subject", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(subject__istartswith=value.strip())
+
+        value = params.get("description", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(description__istartswith=value.strip())
+
+        value = params.get("dob", "")
+        logger.info(f"course======>{value}")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(dob__istartswith=value.strip())
+
+        value = params.get("course_ID", "")
+        logger.info(f"course======>{value}")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(course_ID=int(value))
         return query

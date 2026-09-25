@@ -541,3 +541,13 @@ class Library(models.Model):
 
     class Meta:
         db_table = "Library"
+
+class EmployeeRest(models.Model):
+    employeeId = models.CharField(max_length=20 ,unique=True)
+    employeeName = models.CharField(max_length=100)
+    department = models.CharField(max_length=50)
+    salary = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "employeeRest"

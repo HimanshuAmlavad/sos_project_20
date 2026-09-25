@@ -16,5 +16,5 @@ class LibraryDAO(BaseDAO):
     def get_where_conditions(self, query, params):
         value = params.get("library_name","")
         if DataValidator.isNotNull(value) and value != "":
-            query = query.filter(library_name__istartswith=value.strip())
+            query = query.filter(library_name__istartswith=value.split())
         return query

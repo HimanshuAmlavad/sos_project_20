@@ -16,7 +16,10 @@ Including another URLconf
 
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
+
+from service.models import Employee
 from .rest.CollegeRestCtl import CollegeRestCtl
+from .rest.EmployeeRestCtl import EmployeeRestCtl
 from .rest.StudentRestCtl import StudentPreloadRestCtl, StudentRestCtl
 from .rest.CourseRestCtl import CourseRestCtl
 from .rest.FacultyRestCtl import FacultyRestCtl, FacultyPreloadRestCtl
@@ -79,5 +82,8 @@ urlpatterns = [
     path("api/Library/", LibraryRestCtl.as_view()),
     path("api/Library/search/", LibraryRestCtl.search_view(), name="subject-search"),
     path("api/Library/<int:id>/", LibraryRestCtl.as_view()),
+    path("api/Employee/", EmployeeRestCtl.as_view()),
+    path("api/Employee/search/", EmployeeRestCtl.search_view(), name="subject-search"),
+    path("api/Employee/<int:id>/", EmployeeRestCtl.as_view()),
 
 ]

@@ -1,5 +1,7 @@
+import logging
+
 from service.models import User, Role
-from .BaseDAO import BaseDAO
+from .BaseDAO import BaseDAO, logger
 from service.utility.DataValidator import DataValidator
 
 #presentation layer
@@ -29,8 +31,27 @@ class UserDAO(BaseDAO):
         return obj
 
     def get_where_conditions(self, query, params):
-        value = params.get("id", 0)
-        if DataValidator.isNotNull(value) and value != 0:
-            query = query.filter(id=int(value))
-        
+        print("inside where condition")
+        value = params.get("firstName", "")
+        if DataValidator.isNotNull(value) and value !="":
+            query = query.filter(firstName__istartswith=value.strip())
+        logger.info(f"value=====>{value}")
+
+        value = params.get("last_name", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(lastName__istartswith=value.strip())
+        logger.info(f"value=====>{value}")
+
+        value = params.get("login", "")
+        logger.info(f"value=====>{value}")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(login__istartswith=value.strip())
+
+        value = params.get("mobile", "")
+        logger.info(f"value=====>{value}")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(mobileNumber__istartswith=value.strip())
+
         return query
+
+

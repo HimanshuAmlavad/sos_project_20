@@ -20,8 +20,20 @@ class StudentDAO(BaseDAO):
         return obj
 
     def get_where_conditions(self, query, params):
-        value = params.get("id", 0)
+        value = params.get("firstName", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(firstName__istartswith=value.strip())
+
+        value = params.get("lastName", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(lastName__istartswith=value.strip())
+
+        value = params.get("email", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(email__istartswith=value.strip())
+
+        value = params.get("collegeName", "")
         if DataValidator.isNotNull(value) and value != 0:
-            query = query.filter(id=int(value))
+            query = query.filter(collegeName__istartswith=value.strip())
         
         return query

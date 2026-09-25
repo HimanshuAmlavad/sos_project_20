@@ -25,8 +25,16 @@ class TimeTableDAO(BaseDAO):
         return obj
 
     def get_where_conditions(self, query, params):
-        value = params.get("id", 0)
-        if DataValidator.isNotNull(value) and value != 0:
-            query = query.filter(id=int(value))
+        value = params.get("course_name", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(course_name=value.strip())
+
+        value = params.get("subject_name", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(subject_name__istartswith=value.strip())
+
+        value = params.get("semester", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(semester=value.strip())
         
         return query

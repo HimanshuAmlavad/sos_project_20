@@ -23,8 +23,16 @@ class MarksheetDAO(BaseDAO):
         return obj
 
     def get_where_conditions(self, query, params):
-        value = params.get("id", 0)
+        value = params.get("rollNumber", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(rollNumber__istartswith=value.strip())
+
+        value = params.get("name", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(name__istartswith=value.strip())
+
+        value = params.get("year", 0)
         if DataValidator.isNotNull(value) and value != 0:
-            query = query.filter(id=int(value))
-        
+            query = query.filter(year__istartswith=int(value))
+
         return query

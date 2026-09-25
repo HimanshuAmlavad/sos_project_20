@@ -1,5 +1,5 @@
 from service.models import Role
-from .BaseDAO import BaseDAO
+from .BaseDAO import BaseDAO, logger
 from service.utility.DataValidator import DataValidator
 
 
@@ -15,8 +15,12 @@ class RoleDAO(BaseDAO):
         return obj
 
     def get_where_conditions(self, query, params):
-        value = params.get("id", 0)
-        if DataValidator.isNotNull(value) and value != 0:
-            query = query.filter(id=int(value))
-        
+        value = params.get("name", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(name__istartswith=value.strip())
+
+        value = params.get("description", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(description__istartswith=value.strip())
+
         return query

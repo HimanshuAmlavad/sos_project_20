@@ -15,8 +15,16 @@ class CollegeDAO(BaseDAO):
         return obj
 
     def get_where_conditions(self, query, params):
-        value = params.get("id", 0)
-        if DataValidator.isNotNull(value) and value != 0:
-            query = query.filter(id=int(value))
+        value = params.get("name", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(name__istartswith=value.strip())
+
+        value = params.get("city", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(city__istartswith=value.strip())
+
+        value = params.get("state", "")
+        if DataValidator.isNotNull(value) and value != "":
+            query = query.filter(state__istartswith=value.strip())
         
         return query
