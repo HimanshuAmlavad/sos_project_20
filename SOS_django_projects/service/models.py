@@ -551,3 +551,13 @@ class EmployeeRest(models.Model):
 
     class Meta:
         db_table = "employeeRest"
+
+class DoctorRest(models.Model):
+
+    doctorName = models.CharField(max_length=100)
+    specialization = models.CharField(max_length=100)
+    experience = models.IntegerField()
+    contactNo = models.CharField(max_length=15)
+
+    class Meta:
+        db_table = "DoctorRest"

@@ -15,14 +15,14 @@ class EmployeeRestCtl(BaseRestCtl):
     def get_serializer_class(self):
         return EmployeeSerializers
 
-    def input_validation(self, data):
+    def input_validation(self, _data):
         errors = {}
 
-        employee_id = data.get("employeeId", "")
-        employee_name = data.get("employeeName", "")
-        department = data.get("department", "")
-        salary = data.get("salary", "")
-        status = data.get("status", "")
+        employee_id = _data.get("employeeId", "")
+        employee_name = _data.get("employeeName", "")
+        department = _data.get("department", "")
+        salary = _data.get("salary", "")
+        status = _data.get("status", "")
 
         if DataValidator.isNull(employee_id):
             errors["employeeId"] = "employee Id cannot be null"

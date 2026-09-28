@@ -19,6 +19,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 
 from service.models import Employee
 from .rest.CollegeRestCtl import CollegeRestCtl
+from .rest.DoctorRestCtl import DoctorRestCtl
 from .rest.EmployeeRestCtl import EmployeeRestCtl
 from .rest.StudentRestCtl import StudentPreloadRestCtl, StudentRestCtl
 from .rest.CourseRestCtl import CourseRestCtl
@@ -85,5 +86,8 @@ urlpatterns = [
     path("api/Employee/", EmployeeRestCtl.as_view()),
     path("api/Employee/search/", EmployeeRestCtl.search_view(), name="subject-search"),
     path("api/Employee/<int:id>/", EmployeeRestCtl.as_view()),
+    path("api/Doctor/", DoctorRestCtl.as_view()),
+    path("api/Doctor/search/", DoctorRestCtl.search_view(), name="subject-search"),
+    path("api/Doctor/<int:id>/", DoctorRestCtl.as_view()),
 
 ]
