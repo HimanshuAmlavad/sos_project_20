@@ -18,9 +18,11 @@ from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
 
 from service.models import Employee
+
 from .rest.CollegeRestCtl import CollegeRestCtl
 from .rest.DoctorRestCtl import DoctorRestCtl
 from .rest.EmployeeRestCtl import EmployeeRestCtl
+from .rest.ServiceRestCtl import ServiceRestCtl
 from .rest.StudentRestCtl import StudentPreloadRestCtl, StudentRestCtl
 from .rest.CourseRestCtl import CourseRestCtl
 from .rest.FacultyRestCtl import FacultyRestCtl, FacultyPreloadRestCtl
@@ -89,5 +91,8 @@ urlpatterns = [
     path("api/Doctor/", DoctorRestCtl.as_view()),
     path("api/Doctor/search/", DoctorRestCtl.search_view(), name="subject-search"),
     path("api/Doctor/<int:id>/", DoctorRestCtl.as_view()),
+    path("api/Service/", ServiceRestCtl.as_view()),
+    path("api/Service/search/", ServiceRestCtl.search_view(), name="subject-search"),
+    path("api/Service/<int:id>/", ServiceRestCtl.as_view()),
 
 ]

@@ -561,3 +561,13 @@ class DoctorRest(models.Model):
 
     class Meta:
         db_table = "DoctorRest"
+
+class ServiceRest(models.Model):
+
+    serviceName = models.CharField(max_length=100)
+    price = models.IntegerField()
+    description = models.CharField(max_length=500)
+    serviceCategory = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "ServiceRest"
