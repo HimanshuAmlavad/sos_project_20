@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from service.models import College, Course, Role, User, Faculty, Marksheet, Student, Subject, TimeTable, Library, \
-    EmployeeRest, DoctorRest, ServiceRest
+    EmployeeRest, DoctorRest, ServiceRest, VendorRest
 
 
 class CollegeSerializers(serializers.ModelSerializer):
@@ -74,4 +74,9 @@ class DoctorSerializers(serializers.ModelSerializer):
 class ServiceSerializers(serializers.ModelSerializer):
     class Meta:
         model = ServiceRest
+        fields = "__all__"
+
+class VendorSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = VendorRest
         fields = "__all__"

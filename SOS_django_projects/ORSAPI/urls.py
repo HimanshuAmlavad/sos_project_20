@@ -39,6 +39,7 @@ from .rest.UserRestCtl import (
     UserPreloadRestCtl,
     UploadUserPhotoRestCtl,
 )
+from .rest.VendorRestCtl import VendorRestCtl
 from .rest.library_list_ctl import LibraryRestCtl
 
 urlpatterns = [
@@ -94,5 +95,8 @@ urlpatterns = [
     path("api/Service/", ServiceRestCtl.as_view()),
     path("api/Service/search/", ServiceRestCtl.search_view(), name="subject-search"),
     path("api/Service/<int:id>/", ServiceRestCtl.as_view()),
+    path("api/Vendor/", VendorRestCtl.as_view()),
+    path("api/Vendor/search/", VendorRestCtl.search_view(), name="subject-search"),
+    path("api/Vendor/<int:id>/", VendorRestCtl.as_view()),
 
 ]

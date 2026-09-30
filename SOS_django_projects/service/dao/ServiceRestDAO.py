@@ -8,7 +8,7 @@ class ServiceRestDAO(BaseDAO):
         return ServiceRest
 
     def get_Unique(self):
-        return ["serviceName"]
+        return ["id"]
 
     def populate(self, obj):
         return obj

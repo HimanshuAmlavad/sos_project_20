@@ -571,3 +571,13 @@ class ServiceRest(models.Model):
 
     class Meta:
         db_table = "ServiceRest"
+
+class VendorRest(models.Model):
+
+    vendorName = models.CharField(max_length=100)
+    mobileNo = models.CharField(max_length=15)
+    address = models.CharField(max_length=255)
+    serviceType = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "VendorRest"
